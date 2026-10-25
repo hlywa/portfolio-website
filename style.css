@@ -27,3 +27,22 @@
 .about-column h3{text-align:left;margin-bottom:13px}
 .about-footer{margin-top:70px}
 }
+
+/* Compact, CV-like About page */
+.about-cv{background:#000;padding:30px clamp(20px,5vw,60px) 46px;display:block}
+.about-cv[hidden]{display:none!important}
+.cv-wrap{width:min(100%,890px);margin:0 auto}
+.cv-header{display:grid;grid-template-columns:1fr auto 1fr;align-items:start;margin:0 0 28px}
+.cv-back{justify-self:start;font-size:20px;line-height:1.5;color:#ddd}
+.cv-title{text-align:center}.cv-title .mark{display:block;font-size:15px}
+.cv-title h2{font-size:27px;font-weight:400;line-height:1.2;margin:5px 0 0;letter-spacing:.02em}
+.cv-intro{max-width:850px;margin:0 auto 47px}
+.cv-intro p{margin:0 0 14px;text-align:left;font-size:16px;line-height:1.62;color:#eee}
+.about-cv a:not(.cv-back){text-decoration:underline;text-decoration-color:#6b6b6b;text-underline-offset:3px}
+.about-cv a:hover{text-decoration-color:white}
+.cv-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 58px}
+.cv-group h3{font-size:21px;font-weight:400;margin:0 0 14px;text-align:center;letter-spacing:.01em}
+.cv-group ul{list-style:none;margin:0;padding:0}
+.cv-group li{font-size:14px;color:#d0d0d0;line-height:1.65;margin:0 0 5px}
+.cv-footer{text-align:center;margin:57px 0 0;font-size:14px}
+@media(max-width:600px){.about-cv{padding:22px 20px 36px}.cv-header{margin-bottom:27px}.cv-intro p{font-size:15px}.cv-grid{grid-template-columns:1fr;gap:30px}.cv-group h3{text-align:left;margin-bottom:10px}.cv-footer{margin-top:40px}}
