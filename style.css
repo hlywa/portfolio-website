@@ -46,3 +46,8 @@
 .cv-group li{font-size:14px;color:#d0d0d0;line-height:1.65;margin:0 0 5px}
 .cv-footer{text-align:center;margin:57px 0 0;font-size:14px}
 @media(max-width:600px){.about-cv{padding:22px 20px 36px}.cv-header{margin-bottom:27px}.cv-intro p{font-size:15px}.cv-grid{grid-template-columns:1fr;gap:30px}.cv-group h3{text-align:left;margin-bottom:10px}.cv-footer{margin-top:40px}}
+
+/* Personal performance photograph beneath the About CV */
+.cv-photo{width:min(100%,560px);margin:58px auto 0;padding:0;text-align:center}
+.cv-photo img{display:block;width:100%;height:auto;object-fit:cover}
+@media(max-width:600px){.cv-photo{margin-top:42px}}
