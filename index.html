@@ -2,58 +2,26 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#110e17">
-<meta name="description" content="Rachel Heleva: games, systems, verse. A little world to explore.">
-<title>Rachel Heleva · little worlds</title>
+<meta name="theme-color" content="#000000">
+<meta name="description" content="Rachel Heleva — games, systems, verse.">
+<title>Rachel Heleva</title>
 <link rel="stylesheet" href="./style.css"><script defer src="./script.js"></script>
 </head>
 <body>
-<header class="topbar">
- <a class="home-link" href="#home">rh <span>✧</span></a>
- <span class="top-caption">an index of little worlds</span>
- <nav aria-label="Main navigation"><a href="#about">about</a><a href="#work">work</a><a href="#contact">contact</a></nav>
-</header>
 <main>
-<section class="galaxy" id="home" aria-label="An interactive galaxy of text charms">
- <div class="orb orbit-a" aria-hidden="true"></div><div class="orb orbit-b" aria-hidden="true"></div>
- <div class="center">
-  <div class="blessing">𓂃 ࣪˖𓉸 ִֶָ་༘࿐</div>
-  <p class="eyebrow">researcher · artist · game maker</p>
-  <h1>Rachel <i>Heleva</i></h1>
-  <p class="motto">games, systems, verse</p>
-  <p class="intro">Building worlds where code, folklore, and play become ways of thinking.</p>
-  <div class="small-glitz">｡･:*˚:✧｡</div>
- </div>
- <div class="sigil" data-route="about" style="--x:18%;--y:26%;--speed:8s"><button aria-label="About: click to visit or drag to move"><span class="glyph">𓂃 ࣪˖𓉸 ִֶָ་༘࿐</span><span class="name">about</span><span class="whisper">a little introduction</span></button></div>
- <div class="sigil" data-route="work" style="--x:81%;--y:30%;--speed:9s"><button aria-label="Work: click to visit or drag to move"><span class="glyph">✧˖*°࿐</span><span class="name">work</span><span class="whisper">games, research, experiments</span></button></div>
- <div class="sigil" data-route="contact" style="--x:74%;--y:76%;--speed:7s"><button aria-label="Contact: click to visit or drag to move"><span class="glyph">｡･:*˚:✧｡</span><span class="name">contact</span><span class="whisper">send a signal</span></button></div>
- <div class="sigil" data-route="mystery" style="--x:23%;--y:76%;--speed:10s"><button aria-label="Mystery charm: drag to reveal a hidden passage"><span class="glyph">༊*·˚ ⋆｡𖦹°</span><span class="name">?</span><span class="whisper">try moving me</span></button></div>
- <button id="secret" class="secret" hidden aria-label="Enter hidden room">𓆩♡𓆪 <small>an unmarked door</small></button>
- <p class="hint" id="hint">some things are obvious. others reward curiosity. <span>↝</span></p>
+<section id="home" class="scene route" aria-label="Interactive glyph galaxy">
+<div class="stars" aria-hidden="true"></div><div class="trails" aria-hidden="true"></div>
+<div class="ring ring-one"><button type="button" class="charm" data-target="about"><span class="glyph">𓂃 ࣪˖𓉸 ִֶָ་༘࿐</span><span class="label">about</span></button></div>
+<div class="ring ring-two"><button type="button" class="charm" data-target="work"><span class="glyph">✧˖*°࿐</span><span class="label">work</span></button></div>
+<div class="ring ring-three"><button type="button" class="charm" data-target="contact"><span class="glyph">｡･:*˚:✧｡</span><span class="label">contact</span></button></div>
+<div class="middle"><div class="mark">｡･:*˚:✧｡</div><h1>rachel heleva</h1><p>games, systems, verse</p></div>
+<div class="mystery" id="mystery"><button type="button" aria-label="Move this secret glyph"><span>༊⋆𖦹°</span><small>?</small></button></div>
+<button type="button" class="secret" id="secret-door" hidden><span>𓆩♡𓆪</span><small>unmarked</small></button>
 </section>
-<section id="about" class="page" hidden>
- <div class="ornament">𓂃 ࣪˖𓉸 ִֶָ་༘࿐</div><p class="eyebrow">the person behind the spell</p><h2>About</h2>
- <p class="large">I'm Rachel Heleva, a researcher, designer, and game scout working where games, systems, and verse meet.</p>
- <p>I'm a PhD student in Performance Studies at UC Davis. I study games as systems for thought, expression, and interpretation, with interests in computational poetics, emergence, artificial life, and playable culture.</p>
- <p>My work moves between research, making, scouting, production, and curatorial practice.</p>
- <p><a href="#work">explore the work ↗</a></p>
-</section>
-<section id="work" class="page" hidden>
- <div class="ornament">✧˖*°࿐</div><p class="eyebrow">made things, thinking things, unfinished things</p><h2>Work</h2>
- <p class="large">Games, research, writing, and experiments, without pretending they're separate worlds.</p>
- <div class="project"><small>01 / playable poetry</small><h3>In Countless Shadows</h3><p>Shakespeare's sonnets as playable systems, exploring the puzzle logic of poetic form.</p></div>
- <div class="project"><small>02 / ongoing inquiry</small><h3>Speculative Artificial Ethology</h3><p>Playful systems for observing novelty, emergence, and unexpected behavior.</p></div>
- <p class="soft">More things will appear.</p>
-</section>
-<section id="contact" class="page" hidden>
- <div class="ornament">｡･:*˚:✧｡</div><p class="eyebrow">a message through the ether</p><h2>Contact</h2>
- <p class="large">For games, strange ideas, research, collaborations, and other signals.</p>
- <p><a href="mailto:rlheleva@ucdavis.edu">rlheleva@ucdavis.edu ↗</a> &nbsp; <a href="https://github.com/hlywa">github ↗</a></p>
-</section>
-<section id="hidden-room" class="page" hidden>
- <div class="ornament">𓆩♡𓆪</div><p class="eyebrow">you moved something that was meant to move</p><h2>An unmarked door</h2>
- <p class="large">Not every part of an archive announces itself.</p><p>For now, this room holds a reminder: curiosity is a kind of play.</p><p><a href="#home">return to the stars ↗</a></p>
-</section>
+<section id="about" class="route page" hidden><div class="page-body"><div class="mark">𓂃 ࣪˖𓉸 ִֶָ་༘࿐</div><h2>about</h2><p>I'm Rachel Heleva, a researcher, designer, and game scout working where games, systems, and verse meet.</p><p>I'm a PhD student in Performance Studies at UC Davis. My work explores games as systems for thought, expression, and interpretation.</p><a href="#home">back ✧</a></div></section>
+<section id="work" class="route page" hidden><div class="page-body"><div class="mark">✧˖*°࿐</div><h2>work</h2><p>Games, research, writing, and experiments.</p><article><h3>In Countless Shadows</h3><p>Shakespeare's sonnets as playable systems.</p></article><article><h3>Speculative Artificial Ethology</h3><p>Playful systems for studying emergence and novelty.</p></article><a href="#home">back ✧</a></div></section>
+<section id="contact" class="route page" hidden><div class="page-body"><div class="mark">｡･:*˚:✧｡</div><h2>contact</h2><p>For games, research, collaborations, and other signals.</p><p><a href="mailto:rlheleva@ucdavis.edu">rlheleva@ucdavis.edu</a></p><p><a href="https://github.com/hlywa">github</a></p><a href="#home">back ✧</a></div></section>
+<section id="secret" class="route page" hidden><div class="page-body"><div class="mark">𓆩♡𓆪</div><h2>unmarked</h2><p>Curiosity is a kind of play.</p><a href="#home">back ✧</a></div></section>
 </main>
-<footer>✧ made of small spells and ordinary code ✧</footer>
-</body></html>
+</body>
+</html>
