@@ -51,3 +51,15 @@
 .cv-photo{width:min(100%,560px);margin:58px auto 0;padding:0;text-align:center}
 .cv-photo img{display:block;width:100%;height:auto;object-fit:cover}
 @media(max-width:600px){.cv-photo{margin-top:42px}}
+
+/* Keep the three orbiting charms gathered close to the centered name. */
+.ring-one{width:min(48vw,390px);height:min(48vw,390px);margin-left:calc(min(48vw,390px)/-2);margin-top:calc(min(48vw,390px)/-2)}
+.ring-two{width:min(62vw,510px);height:min(62vw,510px);margin-left:calc(min(62vw,510px)/-2);margin-top:calc(min(62vw,510px)/-2)}
+.ring-three{width:min(76vw,640px);height:min(76vw,640px);margin-left:calc(min(76vw,640px)/-2);margin-top:calc(min(76vw,640px)/-2)}
+.mystery{left:26%;top:76%}.secret{left:26%;top:76%}
+@media(max-width:700px){
+.ring-one{width:67vw;height:67vw;margin-left:-33.5vw;margin-top:-33.5vw}
+.ring-two{width:90vw;height:90vw;margin-left:-45vw;margin-top:-45vw}
+.ring-three{width:116vw;height:116vw;margin-left:-58vw;margin-top:-58vw}
+.mystery{left:14%;top:81%}.secret{left:14%;top:81%}
+}
