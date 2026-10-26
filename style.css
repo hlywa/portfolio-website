@@ -63,3 +63,33 @@
 .ring-three{width:116vw;height:116vw;margin-left:-58vw;margin-top:-58vw}
 .mystery{left:14%;top:81%}.secret{left:14%;top:81%}
 }
+
+/* Contact: tighter viewport-aware orbit and a lower starting phase. */
+.ring-three{
+  width:min(72vw,62svh,480px);
+  height:min(72vw,62svh,480px);
+  margin-left:calc(min(72vw,62svh,480px)/-2);
+  margin-top:calc(min(72vw,62svh,480px)/-2);
+  animation:contactOrbit 68s linear infinite;
+}
+.ring-three .charm{animation:contactUpright 68s linear infinite}
+@keyframes contactOrbit{
+  from{transform:rotate(125deg)}
+  to{transform:rotate(485deg)}
+}
+@keyframes contactUpright{
+  from{transform:translateX(-50%) rotate(-125deg)}
+  to{transform:translateX(-50%) rotate(-485deg)}
+}
+@media(max-width:700px){
+  .ring-three{
+    width:min(88vw,62svh,450px);
+    height:min(88vw,62svh,450px);
+    margin-left:calc(min(88vw,62svh,450px)/-2);
+    margin-top:calc(min(88vw,62svh,450px)/-2)
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .ring-three{transform:rotate(125deg)}
+  .ring-three .charm{transform:translateX(-50%) rotate(-125deg)}
+}
