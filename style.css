@@ -93,3 +93,7 @@
   .ring-three{transform:rotate(125deg)}
   .ring-three .charm{transform:translateX(-50%) rotate(-125deg)}
 }
+
+/* A quiet statement of practice beneath the poetic tagline. */
+.middle .identity{font-size:clamp(11px,1.05vw,14px);font-style:normal;letter-spacing:.05em;color:#f0f0f0;margin-top:17px}
+.middle .worlds{font-size:clamp(10px,.95vw,12px);font-style:italic;letter-spacing:.02em;color:#999;margin-top:6px}
