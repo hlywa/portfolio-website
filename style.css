@@ -100,3 +100,27 @@
 
 /* The early mystery/secret prototype has been retired. */
 .mystery,.secret{display:none!important}
+
+/* p5.js owns the motion. HTML remains responsible for text and navigation. */
+.scene .galaxy-canvas{position:absolute!important;inset:0;display:block;z-index:0;pointer-events:none}
+.scene.p5-ready .stars,.scene.p5-ready .trails{display:none}
+.scene.p5-ready .ring,
+.scene.p5-ready .ring-one,
+.scene.p5-ready .ring-two,
+.scene.p5-ready .ring-three{
+  position:static;width:0;height:0;margin:0;padding:0;
+  transform:none;animation:none;border:0
+}
+.scene.p5-ready .charm,
+.scene.p5-ready .ring-two .charm,
+.scene.p5-ready .ring-three .charm{
+  position:absolute;z-index:3;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  animation:none;pointer-events:auto;
+  transition:opacity .25s ease;
+}
+.scene.p5-ready .charm .glyph{font-size:clamp(17px,1.5vw,24px)}
+@media(max-width:700px){
+ .scene.p5-ready .charm .glyph{font-size:17px}
+ .scene.p5-ready .middle{width:min(85vw,420px)}
+}
