@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Abstract typographic cover for you are rhyme">
+<rect width="400" height="400" fill="#080808"/>
+<rect x="17" y="17" width="366" height="366" fill="none" stroke="#343434" stroke-width=".8"/>
+<g fill="none" stroke="#e8e8e8" stroke-width="1" opacity=".62">
+<path d="M64 140 Q200 55 336 140 M64 260 Q200 345 336 260"/>
+<path d="M76 171 Q200 101 324 171 M76 229 Q200 299 324 229" opacity=".55"/>
+<path d="M96 200 H304" stroke-dasharray="2 11" opacity=".75"/>
+</g>
+<g font-family="Georgia,serif" fill="#eeeeee" text-anchor="middle">
+<text x="200" y="194" font-size="25" letter-spacing="2">you are</text>
+<text x="200" y="232" font-size="29" letter-spacing="2">rhyme</text>
+</g>
+</svg>
