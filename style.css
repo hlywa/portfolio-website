@@ -158,3 +158,7 @@
 @media(max-width:780px){.project-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 16px}.work-head{margin-bottom:38px}}
 @media(max-width:480px){.work-gallery{padding:25px 17px 55px}.project-grid{gap:24px 12px}.project-meta h3{font-size:14px}.project-meta span{font-size:11px}.work-head p{max-width:250px;margin:10px auto 0}.project-square{border-color:#242424}}
 @media(prefers-reduced-motion:reduce){.project-square img,.project-overlay{transition:none}}
+
+/* Two-project edition: balanced two-column square gallery. */
+.project-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:860px;margin:0 auto}
+@media(max-width:480px){.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
