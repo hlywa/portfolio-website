@@ -1,4 +1,4 @@
-const pages=["home","about","work","contact","project-in-countless-shadows","project-speculative-artificial-ethology","project-strike-at-the-wrong-shadow","project-alexandria","project-falcon-rest","project-altars-to-memory"];
+const pages=["home","about","work","contact","project-in-countless-shadows","project-you-are-rhyme"];
 function navigate(){
   const target=location.hash.slice(1)||"home";
   const current=pages.includes(target)?target:"home";
