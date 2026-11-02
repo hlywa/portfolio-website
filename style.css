@@ -476,3 +476,15 @@
 }
 .project-card:hover .project-meta h3,.project-card:focus-visible .project-meta h3{color:var(--hover-light)!important}
 .project-card:active .project-meta h3{color:var(--click-light)!important}
+
+/* Small four-point celestial cursor, color-coded to the site's interactions.
+   Keep native editing cursors and use normal pointers on touch devices. */
+@media (hover:hover) and (pointer:fine){
+  html, body, body *{cursor:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2226%22%20height%3D%2226%22%20viewBox%3D%220%200%2026%2026%22%3E%3Cpath%20d%3D%22M13%202.5%2015.15%2010.85%2023.5%2013%2015.15%2015.15%2013%2023.5%2010.85%2015.15%202.5%2013%2010.85%2010.85Z%22%20fill%3D%22%23080808%22%20fill-opacity%3D%22.92%22%20stroke%3D%22%23f5f1f7%22%20stroke-width%3D%221.35%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2213%22%20cy%3D%2213%22%20r%3D%221.5%22%20fill%3D%22%23f5f1f7%22%2F%3E%3C%2Fsvg%3E") 13 13, auto}
+  a, button, [role="button"], summary, .project-card,
+  a *, button *, [role="button"] *{cursor:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2226%22%20height%3D%2226%22%20viewBox%3D%220%200%2026%2026%22%3E%3Cpath%20d%3D%22M13%202.5%2015.15%2010.85%2023.5%2013%2015.15%2015.15%2013%2023.5%2010.85%2015.15%202.5%2013%2010.85%2010.85Z%22%20fill%3D%22%23080808%22%20fill-opacity%3D%22.92%22%20stroke%3D%22%23ff78d4%22%20stroke-width%3D%221.35%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2213%22%20cy%3D%2213%22%20r%3D%221.5%22%20fill%3D%22%23ff78d4%22%2F%3E%3C%2Fsvg%3E") 13 13, auto!important}
+  a:active, button:active, [role="button"]:active,
+  a:active *, button:active *, [role="button"]:active *,
+  button.is-pressed, button.is-pressed *{cursor:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2226%22%20height%3D%2226%22%20viewBox%3D%220%200%2026%2026%22%3E%3Cpath%20d%3D%22M13%202.5%2015.15%2010.85%2023.5%2013%2015.15%2015.15%2013%2023.5%2010.85%2015.15%202.5%2013%2010.85%2010.85Z%22%20fill%3D%22%23080808%22%20fill-opacity%3D%22.92%22%20stroke%3D%22%2365bdff%22%20stroke-width%3D%221.35%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2213%22%20cy%3D%2213%22%20r%3D%221.5%22%20fill%3D%22%2365bdff%22%2F%3E%3C%2Fsvg%3E") 13 13, auto!important}
+  input, textarea, [contenteditable="true"], input *, textarea *{cursor:text!important}
+}
