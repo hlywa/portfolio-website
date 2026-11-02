@@ -17,6 +17,7 @@ function navigate(){
   const current=pages.includes(target)?target:"home";
   for(const page of pages)document.getElementById(page).hidden=page!==current;
   homeGallery.hidden=current!=="home";
+  if(current==="home")window.dispatchEvent(new Event("galaxy:route-visible"));
   document.title=current==="home"?"Rachel Heleva":current.startsWith("project-")?"Work · Rachel Heleva":current+" · Rachel Heleva";
   window.scrollTo(0,0);
 }
