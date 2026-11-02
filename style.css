@@ -210,7 +210,7 @@
 
 /* Fourth p5.js orbit: no CSS spin or fixed orbit shape once the sketch loads. */
 .scene.p5-ready .ring-four{position:static;width:0;height:0;margin:0;padding:0;transform:none;animation:none}
-.scene.p5-ready .ring-four .charm{position:absolute;z-index:3;left:50%;top:50%;transform:translate(-50%,-50%);animation:none;pointer-events:auto;transition:opacity .25s ease}
+.scene.p5-ready .ring-four .charm{position:absolute;z-index:3;left:22%;top:68%;transform:translate(-50%,-50%);animation:none;pointer-events:auto;transition:opacity .25s ease}
 .ring-four{position:absolute;left:50%;top:50%;width:min(68vw,480px);height:min(68vw,480px);margin-left:calc(min(68vw,480px)/-2);margin-top:calc(min(68vw,480px)/-2);pointer-events:none;animation:reverseSpin 61s linear infinite}
 .ring-four .charm{animation:counterReverse 61s linear infinite}
 @media(prefers-reduced-motion:reduce){.ring-four,.ring-four .charm{animation:none!important}}
@@ -243,3 +243,4 @@
 .essay-body p{margin:0 0 26px}.essay-body h2{font-size:28px;font-weight:400;margin:54px 0 20px}
 .essay-body a{text-decoration:underline;text-underline-offset:4px}
 .essay-body img{display:block;width:100%;height:auto;margin:36px 0}
+\n/* Graceful fallback for a cached p5 sketch that does not position Writings yet. */\n.scene.p5-ready .ring-four .charm:not([style*="px"]){left:22%;top:68%}\n
