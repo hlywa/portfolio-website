@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#000000">
 <meta name="description" content="Rachel Heleva — games, systems, verse.">
 <title>Rachel Heleva</title>
-<link rel="stylesheet" href="./style.css"><script defer src="https://cdn.jsdelivr.net/npm/p5@2.3.4/lib/p5.min.js"></script><script defer src="./galaxy.js"></script><script defer src="./script.js"></script>
+<link rel="stylesheet" href="./style.css"><script defer src="https://cdn.jsdelivr.net/npm/p5@2.3.4/lib/p5.min.js"></script><script defer src="./galaxy.js"></script><script defer src="./writings.js"></script><script defer src="./script.js"></script>
 </head>
 <body>
 <main>
@@ -14,8 +14,9 @@
 <div class="ring ring-one"><button type="button" class="charm" data-target="about"><span class="glyph">𓂃 ࣪˖𓉸 ִֶָ་༘࿐</span><span class="label">about</span></button></div>
 <div class="ring ring-two"><button type="button" class="charm" data-target="work"><span class="glyph">✧˖*°࿐</span><span class="label">work</span></button></div>
 <div class="ring ring-three"><button type="button" class="charm" data-target="contact"><span class="glyph">｡･:*˚:✧｡</span><span class="label">contact</span></button></div>
+<div class="ring ring-four"><button type="button" class="charm" data-target="writings"><span class="glyph">𓂃 ✎ ࣪˖</span><span class="label">writings</span></button></div>
 <div class="middle"><div class="mark">｡･:*˚:✧｡</div><h1>rachel heleva</h1><p>games, systems, verse</p><p class="identity">game designer · researcher · curator</p><p class="worlds">making and studying playable worlds</p></div>
-<button type="button" class="scroll-discover" data-scroll-work aria-label="Scroll down to selected work"><span>selected work</span><span aria-hidden="true">↓</span></button>
+<button type="button" class="scroll-discover" data-scroll-work aria-label="Scroll down to selected work and writings"><span>work &amp; writings</span><span aria-hidden="true">↓</span></button>
 </section>
 <section id="home-gallery" class="home-gallery" aria-label="Selected projects" hidden>
  <div class="home-gallery-wrap">
@@ -34,6 +35,19 @@
     <div class="project-meta"><h3>you are rhyme</h3><span>Voice-controlled theatrical game</span><p>Transforming spoken Shakespeare into tactical action.</p></div>
    </a>
   </div>
+  <section class="writings-section" id="writings" aria-labelledby="writings-title">
+    <header class="writings-heading">
+      <span class="mark" aria-hidden="true">𓂃 ✎ ࣪˖</span>
+      <h2 id="writings-title">writings</h2>
+      <p>Essays, research notes, and other inquiries.</p>
+    </header>
+    <div class="writings-list" id="writings-list" aria-live="polite">
+      <div class="writing-soon">
+        <span class="writing-soon-mark" aria-hidden="true">✧</span>
+        <p>First dispatch forthcoming.</p>
+      </div>
+    </div>
+  </section>
   <a class="gallery-top-link" href="#home" data-scroll-top>↑ return to the galaxy</a>
  </div>
 </section>
