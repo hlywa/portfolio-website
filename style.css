@@ -300,3 +300,24 @@
 .home-about-photo{width:100%;max-width:1100px;aspect-ratio:3/1;margin:0 auto;overflow:hidden}
 .home-about-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 55%}
 @media(max-width:600px){.home-about{margin-top:85px;padding-top:65px}.home-about h2{margin-bottom:18px}.home-about-facts li{font-size:13px}.home-about-socials{margin-bottom:25px}.home-about-socials a{padding:12px 11px;font-size:12px}}
+
+/* Force the full About CV photograph to match the panoramic homepage image. */
+.about-cv .cv-photo{
+  display:block;
+  width:100%;
+  max-width:890px;
+  height:auto;
+  aspect-ratio:3 / 1;
+  overflow:hidden;
+  margin:58px auto 0;
+}
+.about-cv .cv-photo > img{
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:none;
+  aspect-ratio:auto;
+  object-fit:cover;
+  object-position:center 55%;
+}
+@media(max-width:600px){.about-cv .cv-photo{margin-top:42px}}
