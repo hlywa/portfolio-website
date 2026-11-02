@@ -4,7 +4,7 @@
  * the accessible HTML navigation charms belong.
  *
  * Angle, orbital radius, speed, and direction are all editable parameters.
- * The About, Work and Contact pages remain regular HTML.
+ * The About and Contact pages remain regular HTML; Work and Writings scroll to their sections.
  */
 (function () {
   const scene = document.getElementById("home");
@@ -14,7 +14,8 @@
   const bodies = [
     { name: "about", phase: -2.47, period: 35, direction: 1, scaleX: 0.88, scaleY: 0.77 },
     { name: "work", phase: 1.10, period: 52, direction: -1, scaleX: 0.94, scaleY: 1.05 },
-    { name: "contact", phase: -3.25, period: 68, direction: 1, scaleX: 1.05, scaleY: 0.81 }
+    { name: "contact", phase: -3.25, period: 68, direction: 1, scaleX: 1.05, scaleY: 0.81 },
+    { name: "writings", phase: 2.27, period: 61, direction: -1, scaleX: 1.10, scaleY: 1.03 }
   ].map((orbit) => ({
     ...orbit,
     element: scene.querySelector('[data-target="' + orbit.name + '"]')
