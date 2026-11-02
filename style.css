@@ -257,3 +257,7 @@
 }
 /* Before JS starts, the fourth charm should still be visible off-center. */
 .scene .ring-four:not(.writings-orbit-ready){transform:rotate(55deg)}
+
+/* Small project-specific glyphs lead the third line of each selected-work card. */
+.home-project-grid .project-meta .project-blurb{display:flex;align-items:baseline;gap:10px}
+.home-project-grid .project-blurb-glyph{flex:none;font:17px/1 Georgia,serif;color:#ddd;white-space:nowrap}
