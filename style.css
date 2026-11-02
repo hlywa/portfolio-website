@@ -243,4 +243,17 @@
 .essay-body p{margin:0 0 26px}.essay-body h2{font-size:28px;font-weight:400;margin:54px 0 20px}
 .essay-body a{text-decoration:underline;text-underline-offset:4px}
 .essay-body img{display:block;width:100%;height:auto;margin:36px 0}
-\n/* Graceful fallback for a cached p5 sketch that does not position Writings yet. */\n.scene.p5-ready .ring-four .charm:not([style*="px"]){left:22%;top:68%}\n
+
+/* Dedicated scene-sized coordinate space for the fourth orbit (p5 independent). */
+.scene .ring-four.writings-orbit-ready,
+.scene.p5-ready .ring-four.writings-orbit-ready{
+  position:absolute;inset:0;left:0;top:0;width:100%;height:100%;
+  margin:0;transform:none;animation:none;pointer-events:none;
+}
+.scene .ring-four.writings-orbit-ready .charm,
+.scene.p5-ready .ring-four.writings-orbit-ready .charm{
+  position:absolute;left:25%;top:70%;z-index:3;
+  transform:translate(-50%,-50%);animation:none;pointer-events:auto;
+}
+/* Before JS starts, the fourth charm should still be visible off-center. */
+.scene .ring-four:not(.writings-orbit-ready){transform:rotate(55deg)}
