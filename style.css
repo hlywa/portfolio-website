@@ -261,3 +261,23 @@
 /* Small project-specific glyphs lead the third line of each selected-work card. */
 .home-project-grid .project-meta .project-blurb{display:flex;align-items:baseline;gap:10px}
 .home-project-grid .project-blurb-glyph{flex:none;font:17px/1 Georgia,serif;color:#ddd;white-space:nowrap}
+
+/* All orbiting buttons share a full-scene coordinate system controlled by p5.
+   These override legacy nested spinning rings, including the fourth glyph. */
+.scene.orbit-managed .ring,
+.scene.orbit-managed .ring-one,
+.scene.orbit-managed .ring-two,
+.scene.orbit-managed .ring-three,
+.scene.orbit-managed .ring-four{
+  position:absolute!important;inset:0!important;left:0!important;top:0!important;
+  width:100%!important;height:100%!important;margin:0!important;padding:0!important;
+  transform:none!important;animation:none!important;pointer-events:none!important;
+}
+.scene.orbit-managed .ring .charm,
+.scene.orbit-managed .ring-two .charm,
+.scene.orbit-managed .ring-three .charm,
+.scene.orbit-managed .ring-four .charm{
+  position:absolute!important;z-index:3!important;display:flex!important;
+  transform:translate(-50%,-50%)!important;animation:none!important;
+  pointer-events:auto!important;
+}
