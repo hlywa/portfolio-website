@@ -321,3 +321,61 @@
   object-position:center 55%;
 }
 @media(max-width:600px){.about-cv .cv-photo{margin-top:42px}}
+
+/* Projection-light interaction palette: color belongs to actions, never the idle interface. */
+:root{--signal-pink:#f5a1dc;--signal-blue:#83b9ff;--signal-violet:#ba9bfd}
+.scene .charm{isolation:isolate;transition:opacity .2s ease,filter .25s ease}
+.scene .charm::before{
+  content:"";position:absolute;z-index:-1;inset:-11px -24px;
+  border-radius:50%;pointer-events:none;opacity:0;
+  background:radial-gradient(ellipse at 35% 48%,rgba(245,161,220,.20),transparent 62%),
+             radial-gradient(ellipse at 75% 45%,rgba(94,157,255,.18),transparent 65%);
+  filter:blur(11px);transition:opacity .26s ease;
+}
+.scene .charm .glyph,.scene .charm .label{transition:color .22s ease,text-shadow .22s ease}
+.scene .charm:hover::before,.scene .charm:focus-visible::before{opacity:1}
+.scene .charm:hover .glyph,.scene .charm:focus-visible .glyph{
+  color:var(--signal-pink);
+  text-shadow:0 0 9px rgba(245,161,220,.6),0 0 21px rgba(131,185,255,.35);
+}
+.scene .charm:hover .label,.scene .charm:focus-visible .label{color:var(--signal-blue)}
+.scene .charm:active::before{opacity:1}
+.scene .charm:active .glyph{color:#fff;text-shadow:0 0 13px var(--signal-blue),0 0 25px var(--signal-pink)}
+.scene .charm:active .label{color:#fff}
+.scene .charm:focus-visible{outline-color:var(--signal-blue);outline-offset:9px}
+/* Subtle color response throughout the accessible, text-led pages. */
+.home-about-socials a,.cv-group a,.home-about-readmore,
+.detail-back,.work-home,.gallery-top-link,.cv-back,.cv-footer a,
+.essay-back,.page a,.writing-entry,.writing-entry h3{
+  transition:color .2s ease,text-decoration-color .2s ease,text-shadow .2s ease,border-color .2s ease;
+}
+.home-about-socials a:hover,.home-about-socials a:focus-visible,
+.cv-group a:hover,.cv-group a:focus-visible,
+.home-about-readmore:hover,.home-about-readmore:focus-visible,
+.gallery-top-link:hover,.gallery-top-link:focus-visible,
+.cv-back:hover,.cv-back:focus-visible,.cv-footer a:hover,
+.detail-back:hover,.detail-back:focus-visible,
+.work-home:hover,.work-home:focus-visible,
+.page a:hover,.page a:focus-visible,.essay-back:hover,.essay-back:focus-visible{
+  color:var(--signal-pink);text-decoration-color:var(--signal-blue);
+  text-shadow:0 0 12px rgba(245,161,220,.22);
+}
+.home-about-socials a:active,.cv-group a:active,.home-about-readmore:active,
+.gallery-top-link:active,.cv-back:active,.detail-back:active,.page a:active{
+  color:var(--signal-blue);text-shadow:0 0 14px rgba(131,185,255,.50);
+}
+.project-card:hover .project-meta h3,.project-card:focus-visible .project-meta h3,
+.writing-entry:hover h3,.writing-entry:focus-visible h3{color:var(--signal-pink)}
+.project-card .project-meta h3{transition:color .25s ease}
+.project-card:hover .project-square,.project-card:focus-visible .project-square{
+  border-color:rgba(245,161,220,.5);
+  box-shadow:0 0 0 1px rgba(131,185,255,.18),0 0 28px rgba(245,161,220,.10);
+}
+.project-card:active .project-square{border-color:var(--signal-blue);box-shadow:0 0 26px rgba(131,185,255,.22)}
+.project-square{transition:border-color .25s ease,box-shadow .25s ease}
+.scroll-discover:hover,.scroll-discover:focus-visible{color:var(--signal-pink);text-shadow:0 0 12px rgba(245,161,220,.4)}
+.scroll-discover:active{color:var(--signal-blue)}
+@media(prefers-reduced-motion:reduce){
+  .scene .charm,.scene .charm::before,.scene .charm .glyph,.scene .charm .label,
+  .project-square,.project-card .project-meta h3{transition:none!important}
+}
