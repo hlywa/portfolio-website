@@ -1,14 +1,17 @@
 const pages=["home","about","work","contact","project-in-countless-shadows","project-you-are-rhyme"];
 const homeGallery=document.getElementById("home-gallery");
+const writingsSection=document.getElementById("writings");
 const reducedMotion=window.matchMedia("(prefers-reduced-motion: reduce)");
-function scrollToWork(){
+function scrollToSection(section){
+  if(!section)return;
+  const jump=()=>section.scrollIntoView({behavior:reducedMotion.matches?"auto":"smooth",block:"start"});
   if(location.hash && location.hash!=="#home"){
     location.hash="home";
-    requestAnimationFrame(()=>homeGallery.scrollIntoView({behavior:reducedMotion.matches?"instant":"smooth",block:"start"}));
-    return;
-  }
-  homeGallery.scrollIntoView({behavior:reducedMotion.matches?"instant":"smooth",block:"start"});
+    requestAnimationFrame(()=>requestAnimationFrame(jump));
+  } else jump();
 }
+function scrollToWork(){scrollToSection(homeGallery);}
+function scrollToWritings(){scrollToSection(writingsSection);}
 function navigate(){
   const target=location.hash.slice(1)||"home";
   const current=pages.includes(target)?target:"home";
@@ -22,6 +25,7 @@ navigate();
 document.querySelectorAll(".charm").forEach(button=>{
   button.addEventListener("click",()=>{
     if(button.dataset.target==="work"){scrollToWork();return;}
+    if(button.dataset.target==="writings"){scrollToWritings();return;}
     location.hash=button.dataset.target;
   });
 });
