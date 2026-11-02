@@ -48,8 +48,8 @@
 @media(max-width:600px){.about-cv{padding:22px 20px 36px}.cv-header{margin-bottom:27px}.cv-intro p{font-size:15px}.cv-grid{grid-template-columns:1fr;gap:30px}.cv-group h3{text-align:left;margin-bottom:10px}.cv-footer{margin-top:40px}}
 
 /* Personal performance photograph beneath the About CV */
-.cv-photo{width:min(100%,560px);margin:58px auto 0;padding:0;text-align:center}
-.cv-photo img{display:block;width:100%;height:auto;object-fit:cover}
+.cv-photo{width:min(100%,820px);aspect-ratio:3/1;margin:58px auto 0;padding:0;overflow:hidden;text-align:center}
+.cv-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 55%}
 @media(max-width:600px){.cv-photo{margin-top:42px}}
 
 /* Keep the three orbiting charms gathered close to the centered name. */
