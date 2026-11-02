@@ -207,3 +207,39 @@
  .scroll-discover{bottom:17px;font-size:11px}
  .home-project-grid .project-meta h3{font-size:20px}
 }
+
+/* Fourth p5.js orbit: no CSS spin or fixed orbit shape once the sketch loads. */
+.scene.p5-ready .ring-four{position:static;width:0;height:0;margin:0;padding:0;transform:none;animation:none}
+.scene.p5-ready .ring-four .charm{position:absolute;z-index:3;left:50%;top:50%;transform:translate(-50%,-50%);animation:none;pointer-events:auto;transition:opacity .25s ease}
+.ring-four{position:absolute;left:50%;top:50%;width:min(68vw,480px);height:min(68vw,480px);margin-left:calc(min(68vw,480px)/-2);margin-top:calc(min(68vw,480px)/-2);pointer-events:none;animation:reverseSpin 61s linear infinite}
+.ring-four .charm{animation:counterReverse 61s linear infinite}
+@media(prefers-reduced-motion:reduce){.ring-four,.ring-four .charm{animation:none!important}}
+/* Writings is an index of essays, not a second gallery of invented covers. */
+.writings-section{max-width:990px;margin:clamp(85px,12vw,150px) auto 0;padding:clamp(72px,8vw,110px) 0 0;border-top:1px solid #292929;scroll-margin-top:22px}
+.writings-heading{text-align:center;margin-bottom:40px}
+.writings-heading .mark{display:block;font-size:18px;margin-bottom:12px}
+.writings-heading h2{font-size:clamp(30px,3.7vw,47px);font-weight:400;letter-spacing:.03em;margin:0 0 12px}
+.writings-heading p{font:italic 16px/1.5 Georgia,serif;color:#bbb;margin:0}
+.writings-list{max-width:730px;margin:0 auto}
+.writing-soon{border-top:1px solid #333;border-bottom:1px solid #333;min-height:185px;display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center;color:#bcbcbc}
+.writing-soon-mark{font-size:24px;color:#ddd}
+.writing-soon p{font:italic 16px Georgia,serif;letter-spacing:.02em;margin:0}
+.writing-entry{display:block;padding:28px 4px 32px;border-top:1px solid #333}
+.writing-entry:last-child{border-bottom:1px solid #333}
+.writing-entry time{font-size:12px;color:#999;letter-spacing:.04em}
+.writing-entry h3{font-size:clamp(21px,2.2vw,29px);font-weight:400;margin:9px 0}
+.writing-entry p{font-size:15px;line-height:1.65;color:#bdbdbd;margin:0}
+.writing-entry:hover h3,.writing-entry:focus-visible h3{text-decoration:underline;text-underline-offset:5px}
+@media(max-width:600px){.writings-section{margin-top:85px;padding-top:63px}.writings-heading{margin-bottom:28px}.writings-heading p{font-size:14px}.writing-soon{min-height:150px}}
+/* Optional standalone essay layout shares the site's dark editorial typography. */
+.essay-page{background:#000;color:#ededed;min-height:100svh;padding:32px 22px 110px}
+.essay-wrap{max-width:740px;margin:0 auto}
+.essay-back{font-size:14px;color:#aaa;text-decoration:underline;text-underline-offset:5px}
+.essay-header{text-align:center;margin:80px auto 60px}
+.essay-header time{color:#aaa;font-size:13px}
+.essay-header h1{font-weight:400;font-size:clamp(32px,5vw,54px);margin:16px 0}
+.essay-header .essay-deck{font-size:18px;color:#bbb;font-style:italic;line-height:1.5}
+.essay-body{font-size:clamp(17px,1.7vw,19px);line-height:1.85}
+.essay-body p{margin:0 0 26px}.essay-body h2{font-size:28px;font-weight:400;margin:54px 0 20px}
+.essay-body a{text-decoration:underline;text-underline-offset:4px}
+.essay-body img{display:block;width:100%;height:auto;margin:36px 0}
