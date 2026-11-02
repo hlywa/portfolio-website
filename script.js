@@ -25,9 +25,15 @@ window.addEventListener("hashchange",navigate);
 navigate();
 document.querySelectorAll(".charm").forEach(button=>{
   button.addEventListener("click",()=>{
-    if(button.dataset.target==="work"){scrollToWork();return;}
-    if(button.dataset.target==="writings"){scrollToWritings();return;}
-    location.hash=button.dataset.target;
+    // A short blue click flash remains visible before the route changes.
+    button.classList.add("is-pressed");
+    const target=button.dataset.target;
+    window.setTimeout(()=>{
+      button.classList.remove("is-pressed");
+      if(target==="work"){scrollToWork();return;}
+      if(target==="writings"){scrollToWritings();return;}
+      location.hash=target;
+    },170);
   });
 });
 document.querySelector("[data-scroll-work]")?.addEventListener("click",scrollToWork);
