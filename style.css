@@ -379,3 +379,41 @@
   .scene .charm,.scene .charm::before,.scene .charm .glyph,.scene .charm .label,
   .project-square,.project-card .project-meta h3{transition:none!important}
 }
+
+/* More legible projection-light signals. The previous glow was too faint at glyph scale. */
+.scene.orbit-managed .ring .charm:hover,
+.scene.orbit-managed .ring .charm:focus-visible{
+  opacity:1!important;
+  filter:drop-shadow(0 0 7px rgba(255,87,210,.68)) drop-shadow(0 0 17px rgba(64,155,255,.45));
+}
+.scene.orbit-managed .ring .charm:hover .glyph,
+.scene.orbit-managed .ring .charm:focus-visible .glyph{
+  color:#ff6bd0!important;
+  text-shadow:0 0 7px #ff61d0,0 0 19px rgba(255,70,197,.75),0 0 28px rgba(64,140,255,.7)!important;
+}
+.scene.orbit-managed .ring .charm:hover .label,
+.scene.orbit-managed .ring .charm:focus-visible .label{
+  color:#60b7ff!important;
+  text-shadow:0 0 8px rgba(60,151,255,.9),0 0 17px rgba(235,80,211,.5)!important;
+}
+.scene.orbit-managed .ring .charm:active .glyph{
+  color:#70c7ff!important;
+  text-shadow:0 0 12px #4abfff,0 0 26px #ff65d0!important;
+}
+.home-about-socials a:hover,.home-about-socials a:focus-visible,
+.cv-group a:hover,.cv-group a:focus-visible,
+.about-cv a:hover,.about-cv a:focus-visible,
+.home-about-readmore:hover,.home-about-readmore:focus-visible{
+  color:#ff83d9!important;
+  text-decoration-color:#71baff!important;
+  text-shadow:0 0 11px rgba(255,94,200,.55);
+}
+.home-about-socials a:active,.about-cv a:active{color:#6abfff!important}
+.project-card:hover .project-square,.project-card:focus-visible .project-square{
+  border-color:#ff6bd0;
+  box-shadow:0 0 0 1px rgba(255,107,208,.7),0 0 34px rgba(110,157,255,.24);
+}
+.project-card:hover .project-meta h3,.project-card:focus-visible .project-meta h3{
+  color:#ff83d9;
+  text-shadow:0 0 10px rgba(255,107,208,.3);
+}
