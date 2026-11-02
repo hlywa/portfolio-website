@@ -36,33 +36,3 @@ document.querySelector("[data-scroll-top]")?.addEventListener("click",event=>{
   if(location.hash!=="#home")history.replaceState(null,"",location.pathname+location.search+"#home");
 });
 
-/*
- * Writings: a dedicated fourth orbit. Its position is independent of the
- * p5 canvas's initialization and its parent has a full scene-sized box.
- * This prevents the new glyph from collapsing onto the centered title.
- */
-(function animateWritingsOrbit(){
-  const scene=document.getElementById("home");
-  const ring=scene?.querySelector(".ring-four");
-  const charm=ring?.querySelector(".charm");
-  if(!scene||!ring||!charm)return;
-  const started=performance.now();
-  ring.classList.add("writings-orbit-ready");
-
-  function tick(now){
-    const width=scene.clientWidth;
-    const height=scene.clientHeight;
-    const cx=width/2,cy=height/2;
-    const rx=Math.min(width*.35,300)*1.10;
-    const ry=Math.min(height*.32,265)*1.03;
-    const elapsed=reducedMotion.matches?0:(now-started)/1000;
-    const phase=2.27-(2*Math.PI*elapsed/61);
-    const x=cx+Math.cos(phase)*rx;
-    const y=cy+Math.sin(phase)*ry;
-    charm.style.left=x+"px";
-    charm.style.top=y+"px";
-    if(!reducedMotion.matches && !scene.hidden)requestAnimationFrame(tick);
-    else if(!reducedMotion.matches)setTimeout(()=>requestAnimationFrame(tick),500);
-  }
-  requestAnimationFrame(tick);
-})();
