@@ -1,13 +1,33 @@
 const pages=["home","about","work","contact","project-in-countless-shadows","project-you-are-rhyme"];
+const homeGallery=document.getElementById("home-gallery");
+const reducedMotion=window.matchMedia("(prefers-reduced-motion: reduce)");
+function scrollToWork(){
+  if(location.hash && location.hash!=="#home"){
+    location.hash="home";
+    requestAnimationFrame(()=>homeGallery.scrollIntoView({behavior:reducedMotion.matches?"instant":"smooth",block:"start"}));
+    return;
+  }
+  homeGallery.scrollIntoView({behavior:reducedMotion.matches?"instant":"smooth",block:"start"});
+}
 function navigate(){
   const target=location.hash.slice(1)||"home";
   const current=pages.includes(target)?target:"home";
   for(const page of pages)document.getElementById(page).hidden=page!==current;
+  homeGallery.hidden=current!=="home";
   document.title=current==="home"?"Rachel Heleva":current.startsWith("project-")?"Work · Rachel Heleva":current+" · Rachel Heleva";
   window.scrollTo(0,0);
 }
 window.addEventListener("hashchange",navigate);
 navigate();
 document.querySelectorAll(".charm").forEach(button=>{
-  button.addEventListener("click",()=>{location.hash=button.dataset.target});
+  button.addEventListener("click",()=>{
+    if(button.dataset.target==="work"){scrollToWork();return;}
+    location.hash=button.dataset.target;
+  });
+});
+document.querySelector("[data-scroll-work]")?.addEventListener("click",scrollToWork);
+document.querySelector("[data-scroll-top]")?.addEventListener("click",event=>{
+  event.preventDefault();
+  window.scrollTo({top:0,behavior:reducedMotion.matches?"instant":"smooth"});
+  if(location.hash!=="#home")history.replaceState(null,"",location.pathname+location.search+"#home");
 });
