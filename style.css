@@ -48,8 +48,8 @@
 @media(max-width:600px){.about-cv{padding:22px 20px 36px}.cv-header{margin-bottom:27px}.cv-intro p{font-size:15px}.cv-grid{grid-template-columns:1fr;gap:30px}.cv-group h3{text-align:left;margin-bottom:10px}.cv-footer{margin-top:40px}}
 
 /* Personal performance photograph beneath the About CV */
-.cv-photo{width:min(100%,560px);margin:58px auto 0;padding:0;text-align:center}
-.cv-photo img{display:block;width:100%;height:auto;object-fit:cover}
+.cv-photo{width:min(100%,820px);aspect-ratio:3/1;margin:58px auto 0;padding:0;overflow:hidden;text-align:center}
+.cv-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 55%}
 @media(max-width:600px){.cv-photo{margin-top:42px}}
 
 /* Keep the three orbiting charms gathered close to the centered name. */
@@ -300,3 +300,191 @@
 .home-about-photo{width:100%;max-width:1100px;aspect-ratio:3/1;margin:0 auto;overflow:hidden}
 .home-about-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 55%}
 @media(max-width:600px){.home-about{margin-top:85px;padding-top:65px}.home-about h2{margin-bottom:18px}.home-about-facts li{font-size:13px}.home-about-socials{margin-bottom:25px}.home-about-socials a{padding:12px 11px;font-size:12px}}
+
+/* Force the full About CV photograph to match the panoramic homepage image. */
+.about-cv .cv-photo{
+  display:block;
+  width:100%;
+  max-width:890px;
+  height:auto;
+  aspect-ratio:3 / 1;
+  overflow:hidden;
+  margin:58px auto 0;
+}
+.about-cv .cv-photo > img{
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:none;
+  aspect-ratio:auto;
+  object-fit:cover;
+  object-position:center 55%;
+}
+@media(max-width:600px){.about-cv .cv-photo{margin-top:42px}}
+
+/* Projection-light interaction palette: color belongs to actions, never the idle interface. */
+:root{--signal-pink:#f5a1dc;--signal-blue:#83b9ff;--signal-violet:#ba9bfd}
+.scene .charm{isolation:isolate;transition:opacity .2s ease,filter .25s ease}
+.scene .charm::before{
+  content:"";position:absolute;z-index:-1;inset:-11px -24px;
+  border-radius:50%;pointer-events:none;opacity:0;
+  background:radial-gradient(ellipse at 35% 48%,rgba(245,161,220,.20),transparent 62%),
+             radial-gradient(ellipse at 75% 45%,rgba(94,157,255,.18),transparent 65%);
+  filter:blur(11px);transition:opacity .26s ease;
+}
+.scene .charm .glyph,.scene .charm .label{transition:color .22s ease,text-shadow .22s ease}
+.scene .charm:hover::before,.scene .charm:focus-visible::before{opacity:1}
+.scene .charm:hover .glyph,.scene .charm:focus-visible .glyph{
+  color:var(--signal-pink);
+  text-shadow:0 0 9px rgba(245,161,220,.6),0 0 21px rgba(131,185,255,.35);
+}
+.scene .charm:hover .label,.scene .charm:focus-visible .label{color:var(--signal-blue)}
+.scene .charm:active::before{opacity:1}
+.scene .charm:active .glyph{color:#fff;text-shadow:0 0 13px var(--signal-blue),0 0 25px var(--signal-pink)}
+.scene .charm:active .label{color:#fff}
+.scene .charm:focus-visible{outline-color:var(--signal-blue);outline-offset:9px}
+/* Subtle color response throughout the accessible, text-led pages. */
+.home-about-socials a,.cv-group a,.home-about-readmore,
+.detail-back,.work-home,.gallery-top-link,.cv-back,.cv-footer a,
+.essay-back,.page a,.writing-entry,.writing-entry h3{
+  transition:color .2s ease,text-decoration-color .2s ease,text-shadow .2s ease,border-color .2s ease;
+}
+.home-about-socials a:hover,.home-about-socials a:focus-visible,
+.cv-group a:hover,.cv-group a:focus-visible,
+.home-about-readmore:hover,.home-about-readmore:focus-visible,
+.gallery-top-link:hover,.gallery-top-link:focus-visible,
+.cv-back:hover,.cv-back:focus-visible,.cv-footer a:hover,
+.detail-back:hover,.detail-back:focus-visible,
+.work-home:hover,.work-home:focus-visible,
+.page a:hover,.page a:focus-visible,.essay-back:hover,.essay-back:focus-visible{
+  color:var(--signal-pink);text-decoration-color:var(--signal-blue);
+  text-shadow:0 0 12px rgba(245,161,220,.22);
+}
+.home-about-socials a:active,.cv-group a:active,.home-about-readmore:active,
+.gallery-top-link:active,.cv-back:active,.detail-back:active,.page a:active{
+  color:var(--signal-blue);text-shadow:0 0 14px rgba(131,185,255,.50);
+}
+.project-card:hover .project-meta h3,.project-card:focus-visible .project-meta h3,
+.writing-entry:hover h3,.writing-entry:focus-visible h3{color:var(--signal-pink)}
+.project-card .project-meta h3{transition:color .25s ease}
+.project-card:hover .project-square,.project-card:focus-visible .project-square{
+  border-color:rgba(245,161,220,.5);
+  box-shadow:0 0 0 1px rgba(131,185,255,.18),0 0 28px rgba(245,161,220,.10);
+}
+.project-card:active .project-square{border-color:var(--signal-blue);box-shadow:0 0 26px rgba(131,185,255,.22)}
+.project-square{transition:border-color .25s ease,box-shadow .25s ease}
+.scroll-discover:hover,.scroll-discover:focus-visible{color:var(--signal-pink);text-shadow:0 0 12px rgba(245,161,220,.4)}
+.scroll-discover:active{color:var(--signal-blue)}
+@media(prefers-reduced-motion:reduce){
+  .scene .charm,.scene .charm::before,.scene .charm .glyph,.scene .charm .label,
+  .project-square,.project-card .project-meta h3{transition:none!important}
+}
+
+/* More legible projection-light signals. The previous glow was too faint at glyph scale. */
+.scene.orbit-managed .ring .charm:hover,
+.scene.orbit-managed .ring .charm:focus-visible{
+  opacity:1!important;
+  filter:drop-shadow(0 0 7px rgba(255,87,210,.68)) drop-shadow(0 0 17px rgba(64,155,255,.45));
+}
+.scene.orbit-managed .ring .charm:hover .glyph,
+.scene.orbit-managed .ring .charm:focus-visible .glyph{
+  color:#ff6bd0!important;
+  text-shadow:0 0 7px #ff61d0,0 0 19px rgba(255,70,197,.75),0 0 28px rgba(64,140,255,.7)!important;
+}
+.scene.orbit-managed .ring .charm:hover .label,
+.scene.orbit-managed .ring .charm:focus-visible .label{
+  color:#60b7ff!important;
+  text-shadow:0 0 8px rgba(60,151,255,.9),0 0 17px rgba(235,80,211,.5)!important;
+}
+.scene.orbit-managed .ring .charm:active .glyph{
+  color:#70c7ff!important;
+  text-shadow:0 0 12px #4abfff,0 0 26px #ff65d0!important;
+}
+.home-about-socials a:hover,.home-about-socials a:focus-visible,
+.cv-group a:hover,.cv-group a:focus-visible,
+.about-cv a:hover,.about-cv a:focus-visible,
+.home-about-readmore:hover,.home-about-readmore:focus-visible{
+  color:#ff83d9!important;
+  text-decoration-color:#71baff!important;
+  text-shadow:0 0 11px rgba(255,94,200,.55);
+}
+.home-about-socials a:active,.about-cv a:active{color:#6abfff!important}
+.project-card:hover .project-square,.project-card:focus-visible .project-square{
+  border-color:#ff6bd0;
+  box-shadow:0 0 0 1px rgba(255,107,208,.7),0 0 34px rgba(110,157,255,.24);
+}
+.project-card:hover .project-meta h3,.project-card:focus-visible .project-meta h3{
+  color:#ff83d9;
+  text-shadow:0 0 10px rgba(255,107,208,.3);
+}
+
+/* Interaction grammar: white at rest, pink on hover/focus, blue on press/click.
+   Keep each state a single hue; no blended pink-blue glows. */
+:root{--hover-light:#ff78d4;--click-light:#65bdff}
+.scene .charm:hover,.scene .charm:focus-visible{
+  opacity:1!important;
+  filter:drop-shadow(0 0 9px rgba(255,120,212,.52))!important;
+}
+.scene .charm:hover .glyph,.scene .charm:hover .label,
+.scene .charm:focus-visible .glyph,.scene .charm:focus-visible .label{
+  color:var(--hover-light)!important;
+  text-shadow:0 0 10px rgba(255,120,212,.72)!important;
+}
+.scene .charm:hover::before,.scene .charm:focus-visible::before{
+  opacity:1;
+  background:radial-gradient(ellipse,rgba(255,120,212,.22),transparent 70%)!important;
+}
+.scene .charm:active,.scene .charm.is-pressed{
+  opacity:1!important;
+  filter:drop-shadow(0 0 11px rgba(101,189,255,.8))!important;
+}
+.scene .charm:active .glyph,.scene .charm:active .label,
+.scene .charm.is-pressed .glyph,.scene .charm.is-pressed .label{
+  color:var(--click-light)!important;
+  text-shadow:0 0 12px rgba(101,189,255,.92)!important;
+}
+.scene .charm:active::before,.scene .charm.is-pressed::before{
+  opacity:1!important;
+  background:radial-gradient(ellipse,rgba(101,189,255,.29),transparent 70%)!important;
+}
+.home-about-socials a:hover,.home-about-socials a:focus-visible,
+.cv-group a:hover,.cv-group a:focus-visible,
+.about-cv a:hover,.about-cv a:focus-visible,
+.home-about-readmore:hover,.home-about-readmore:focus-visible,
+.gallery-top-link:hover,.gallery-top-link:focus-visible,
+.detail-back:hover,.detail-back:focus-visible,
+.scroll-discover:hover,.scroll-discover:focus-visible,
+.page a:hover,.page a:focus-visible{
+  color:var(--hover-light)!important;
+  text-shadow:0 0 9px rgba(255,120,212,.45)!important;
+  text-decoration-color:var(--hover-light)!important;
+}
+.home-about-socials a:active,.cv-group a:active,.about-cv a:active,
+.home-about-readmore:active,.gallery-top-link:active,.detail-back:active,
+.scroll-discover:active,.page a:active{
+  color:var(--click-light)!important;
+  text-shadow:0 0 11px rgba(101,189,255,.7)!important;
+  text-decoration-color:var(--click-light)!important;
+}
+.project-card:hover .project-square,.project-card:focus-visible .project-square{
+  border-color:var(--hover-light)!important;
+  box-shadow:0 0 24px rgba(255,120,212,.2)!important;
+}
+.project-card:active .project-square{
+  border-color:var(--click-light)!important;
+  box-shadow:0 0 26px rgba(101,189,255,.42)!important;
+}
+.project-card:hover .project-meta h3,.project-card:focus-visible .project-meta h3{color:var(--hover-light)!important}
+.project-card:active .project-meta h3{color:var(--click-light)!important}
+
+/* Small four-point celestial cursor, color-coded to the site's interactions.
+   Keep native editing cursors and use normal pointers on touch devices. */
+@media (hover:hover) and (pointer:fine){
+  html, body, body *{cursor:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2226%22%20height%3D%2226%22%20viewBox%3D%220%200%2026%2026%22%3E%3Cpath%20d%3D%22M13%202.5%2015.15%2010.85%2023.5%2013%2015.15%2015.15%2013%2023.5%2010.85%2015.15%202.5%2013%2010.85%2010.85Z%22%20fill%3D%22%23080808%22%20fill-opacity%3D%22.92%22%20stroke%3D%22%23f5f1f7%22%20stroke-width%3D%221.35%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2213%22%20cy%3D%2213%22%20r%3D%221.5%22%20fill%3D%22%23f5f1f7%22%2F%3E%3C%2Fsvg%3E") 13 13, auto}
+  a, button, [role="button"], summary, .project-card,
+  a *, button *, [role="button"] *{cursor:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2226%22%20height%3D%2226%22%20viewBox%3D%220%200%2026%2026%22%3E%3Cpath%20d%3D%22M13%202.5%2015.15%2010.85%2023.5%2013%2015.15%2015.15%2013%2023.5%2010.85%2015.15%202.5%2013%2010.85%2010.85Z%22%20fill%3D%22%23080808%22%20fill-opacity%3D%22.92%22%20stroke%3D%22%23ff78d4%22%20stroke-width%3D%221.35%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2213%22%20cy%3D%2213%22%20r%3D%221.5%22%20fill%3D%22%23ff78d4%22%2F%3E%3C%2Fsvg%3E") 13 13, auto!important}
+  a:active, button:active, [role="button"]:active,
+  a:active *, button:active *, [role="button"]:active *,
+  button.is-pressed, button.is-pressed *{cursor:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2226%22%20height%3D%2226%22%20viewBox%3D%220%200%2026%2026%22%3E%3Cpath%20d%3D%22M13%202.5%2015.15%2010.85%2023.5%2013%2015.15%2015.15%2013%2023.5%2010.85%2015.15%202.5%2013%2010.85%2010.85Z%22%20fill%3D%22%23080808%22%20fill-opacity%3D%22.92%22%20stroke%3D%22%2365bdff%22%20stroke-width%3D%221.35%22%20stroke-linejoin%3D%22round%22%2F%3E%3Ccircle%20cx%3D%2213%22%20cy%3D%2213%22%20r%3D%221.5%22%20fill%3D%22%2365bdff%22%2F%3E%3C%2Fsvg%3E") 13 13, auto!important}
+  input, textarea, [contenteditable="true"], input *, textarea *{cursor:text!important}
+}

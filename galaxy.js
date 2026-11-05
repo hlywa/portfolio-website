@@ -71,8 +71,24 @@
       placeNavigation();
     };
 
+    // Browsers report a hidden route's width and height as zero.
+    // Restore the canvas whenever #home becomes visible again, including
+    // browser Back/Forward and direct navigation to a project URL.
+    function syncCanvasSize() {
+      if (scene.hidden) return;
+      const w = scene.clientWidth, h = scene.clientHeight;
+      if (w < 1 || h < 1) return;
+      if (p.width !== w || p.height !== h) p.resizeCanvas(w, h, true);
+      placeNavigation();
+    }
+
+    window.addEventListener("galaxy:route-visible", () => {
+      requestAnimationFrame(() => requestAnimationFrame(syncCanvasSize));
+    });
+
     p.draw = () => {
       if (scene.hidden) return;
+      syncCanvasSize();
       p.clear();
       const { cx, cy } = geometry();
 
@@ -93,9 +109,6 @@
       placeNavigation();
     };
 
-    p.windowResized = () => {
-      p.resizeCanvas(scene.clientWidth, scene.clientHeight);
-      placeNavigation();
-    };
+    p.windowResized = syncCanvasSize;
   }, scene);
 })();
