@@ -55,7 +55,67 @@
 <footer class="cv-footer"><a href="#home">✧ back</a></footer>
 </div>
 </section>
-<section id="work" class="route page" hidden><div class="page-body"><div class="mark">✧˖*°࿐</div><h2>work</h2><p>Games, research, writing, and experiments.</p><article><h3>In Countless Shadows</h3><p>Shakespeare's sonnets as playable systems.</p></article><article><h3>Speculative Artificial Ethology</h3><p>Playful systems for studying emergence and novelty.</p></article><a href="#home">back ✧</a></div></section>
+<section id="work" class="route work-gallery" hidden>
+ <div class="work-wrap">
+  <header class="work-head"><a href="#home" class="work-back" aria-label="Back to homepage">←</a><div><span class="mark">✧˖*°࿐</span><h2>work</h2><p>Games, systems, experiments, and other forms of play.</p></div><span></span></header>
+  <div class="project-grid" aria-label="Selected projects">
+   <a class="project-card" href="#project-in-countless-shadows" aria-label="View In Countless Shadows"><div class="project-square"><img src="./images/work-in-countless-shadows.svg" alt="Abstract cover for In Countless Shadows" loading="lazy" width="400" height="400"/><span class="project-overlay">view project ↗</span></div><div class="project-meta"><h3>In Countless Shadows</h3><span>Playable poetry · Game</span></div></a>
+   <a class="project-card" href="#project-you-are-rhyme" aria-label="View you are rhyme"><div class="project-square"><img src="./images/work-you-are-rhyme.svg" alt="Abstract typographic cover for you are rhyme" loading="lazy" width="400" height="400"/><span class="project-overlay">view project ↗</span></div><div class="project-meta"><h3>you are rhyme</h3></div></a>
+  </div>
+  <a class="work-home" href="#home">✧ back</a>
+ </div>
+</section>
+<section id="project-in-countless-shadows" class="route project-detail shadows-detail" hidden>
+  <div class="detail-wrap">
+    <a class="detail-back" href="#work">← all work</a>
+    <div class="shadows-essay">
+      <div class="shadows-heading">
+        <span class="shadows-glyph" aria-hidden="true">✧˖*°࿐</span>
+        <h2>In Countless Shadows</h2>
+        <p class="shadows-deck">An experimental puzzle game about poetry, form, and the possibilities of language.</p>
+      </div>
+      <figure class="detail-cover"><img src="./images/work-in-countless-shadows.svg" alt="Abstract cover for In Countless Shadows" width="400" height="400" /></figure>
+      <div class="shadows-prose">
+        <p class="shadows-question">What happens when a poem becomes a system you can play?</p>
+        <p><em>In Countless Shadows</em> is a playable exploration of Shakespeare's sonnets, treating poetic form not simply as a literary convention but as a system of interacting rules, constraints, and possibilities.</p>
+        <p>Built in Godot, the game invites players to dismantle and recompose Shakespeare's poetry, rearranging words while navigating the relationships between meter, rhyme, repetition, and rhetorical structure. Each decision can create new formal possibilities, disrupt existing patterns, or transform the meaning of a verse.</p>
+        <p>The project explores the relationship between puzzle design and computational poetics: how can the structures of poetry become discoverable through play? And what happens when a poem can satisfy its formal constraints while remaining open to multiple interpretations?</p>
+        <p>Beginning with Sonnet 17, <em>In Countless Shadows</em> is an ongoing experiment in making poetic form playable, with the broader ambition of exploring Shakespeare's complete sonnet sequence.</p>
+      </div>
+      <dl class="shadows-facts">
+        <div><dt>Status</dt><dd>In development</dd></div>
+        <div><dt>Engine</dt><dd>Godot / GDScript</dd></div>
+        <div><dt>GitHub</dt><dd><a href="https://github.com/hlywa/in-countless-shadows" target="_blank" rel="noopener noreferrer">hlywa/in-countless-shadows ↗</a></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+<section id="project-you-are-rhyme" class="route project-detail shadows-detail rhyme-detail" hidden>
+  <div class="detail-wrap">
+    <a class="detail-back" href="#work">← all work</a>
+    <div class="shadows-essay">
+      <div class="shadows-heading">
+        <span class="shadows-glyph" aria-hidden="true">✧˖*°࿐</span>
+        <h2>you are rhyme</h2>
+        <p class="shadows-deck">An experimental theatrical duel where spoken language becomes a system of action.</p>
+      </div>
+      <figure class="detail-cover"><img src="./images/work-you-are-rhyme.svg" alt="Abstract typographic cover for you are rhyme" width="400" height="400"/></figure>
+      <div class="shadows-prose">
+        <p class="shadows-question">What if performing a line of Shakespeare changed the world of the play?</p>
+        <p><em>you are rhyme</em> is a voice-activated theatrical game built around the confrontation between Hamlet and Gertrude in Act III, Scene IV. Rather than selecting moves from a conventional menu, players speak their characters' lines. How those lines are delivered shapes what happens on a tactical grid.</p>
+        <p>The game translates vocal performance into rules. A local speech-recognition pipeline listens for pauses and volume, while the system compares spoken words with Shakespeare's script and measures changes in pacing. Those signals pass through a custom domain-specific language that turns performance into actions such as lunging, feinting, repelling, disarming, and altering the arras.</p>
+        <p>The two roles have different possibilities. Hamlet tries to reach Polonius behind the arras; Gertrude tries to protect him. A procedurally generated stage places bodies, barriers, and furniture into changing configurations. The project also experiments with genetic algorithms that test candidate layouts through simulated matches.</p>
+        <p><em>you are rhyme</em> asks what happens when theatrical interpretation is made operational: when a pause, an emphatic line, or a departure from the text is no longer only a matter of expression, but a consequential move inside a playable system.</p>
+      </div>
+      <dl class="shadows-facts">
+        <div><dt>Status</dt><dd>Prototype / in development</dd></div>
+        <div><dt>Format</dt><dd>Voice-controlled theatrical strategy game</dd></div>
+        <div><dt>Technology</dt><dd>React, Vite, Node.js, Python, Whisper, custom DSL, genetic algorithms</dd></div>
+        <div><dt>Source</dt><dd><a href="https://github.com/kdavidmitchell/you-are-rhyme" target="_blank" rel="noopener noreferrer">GitHub: kdavidmitchell/you-are-rhyme ↗</a></dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
 <section id="contact" class="route page" hidden><div class="page-body"><div class="mark">｡･:*˚:✧｡</div><h2>contact</h2><p>For games, research, collaborations, and other signals.</p><p><a href="mailto:rlheleva@ucdavis.edu">rlheleva@ucdavis.edu</a></p><p><a href="https://github.com/hlywa">github</a></p><a href="#home">back ✧</a></div></section>
 </main>
 </body>
