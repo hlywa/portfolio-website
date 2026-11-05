@@ -5,7 +5,7 @@
 <meta name="theme-color" content="#000000">
 <meta name="description" content="Rachel Heleva — games, systems, verse.">
 <title>Rachel Heleva</title>
-<link rel="stylesheet" href="./style.css"><script defer src="https://cdn.jsdelivr.net/npm/p5@2.3.4/lib/p5.min.js"></script><script defer src="./galaxy.js"></script><script defer src="./script.js"></script>
+<link rel="stylesheet" href="./style.css?v=20261102-orbit4"><script defer src="https://cdn.jsdelivr.net/npm/p5@2.3.4/lib/p5.min.js"></script><script defer src="./galaxy.js?v=20261102-orbit4"></script><script defer src="./writings.js"></script><script defer src="./script.js?v=20261102-orbit4"></script>
 </head>
 <body>
 <main>
@@ -14,7 +14,66 @@
 <div class="ring ring-one"><button type="button" class="charm" data-target="about"><span class="glyph">𓂃 ࣪˖𓉸 ִֶָ་༘࿐</span><span class="label">about</span></button></div>
 <div class="ring ring-two"><button type="button" class="charm" data-target="work"><span class="glyph">✧˖*°࿐</span><span class="label">work</span></button></div>
 <div class="ring ring-three"><button type="button" class="charm" data-target="contact"><span class="glyph">｡･:*˚:✧｡</span><span class="label">contact</span></button></div>
-<div class="middle"><div class="mark">｡･:*˚:✧｡</div><h1>rachel heleva</h1><p>games, systems, verse</p><p class="identity">game designer · researcher · curator</p><p class="worlds">making and studying playable worlds</p></div>
+<div class="ring ring-four"><button type="button" class="charm" data-target="writings"><span class="glyph">𓂃 ✎ ࣪˖</span><span class="label">writings</span></button></div>
+<div class="middle"><div class="mark">｡･:*˚:✧｡</div><h1>rachel heleva</h1><p>games, systems, verse</p><p class="identity">game designer · researcher · curator</p><p class="worlds">making and studying playable systems</p></div>
+<button type="button" class="scroll-discover" data-scroll-work aria-label="Scroll down to selected work and writings"><span>work &amp; writings</span><span aria-hidden="true">↓</span></button>
+</section>
+<section id="home-gallery" class="home-gallery" aria-label="Selected projects" hidden>
+ <div class="home-gallery-wrap">
+  <div class="home-gallery-head">
+   <span class="mark" aria-hidden="true">✧˖*°࿐</span>
+   <h2>selected work</h2>
+   <p>Games, systems, and playable experiments.</p>
+  </div>
+  <div class="project-grid home-project-grid">
+   <a class="project-card" href="#project-in-countless-shadows" aria-label="View In Countless Shadows">
+    <div class="project-square"><img src="./images/work-in-countless-shadows.svg" width="400" height="400" loading="lazy" alt="Abstract cover for In Countless Shadows"><span class="project-overlay">explore project ↗</span></div>
+    <div class="project-meta"><h3>In Countless Shadows</h3><span>Experimental puzzle game · Computational poetry</span><p class="project-blurb"><span class="project-blurb-glyph" aria-hidden="true">✧</span><span>Recomposing Shakespeare's sonnets through play.</span></p></div>
+   </a>
+   <a class="project-card" href="#project-you-are-rhyme" aria-label="View you are rhyme">
+    <div class="project-square"><img src="./images/work-you-are-rhyme.svg" width="400" height="400" loading="lazy" alt="Abstract typographic cover for you are rhyme"><span class="project-overlay">explore project ↗</span></div>
+    <div class="project-meta"><h3>you are rhyme</h3><span>Voice-controlled theatrical game</span><p class="project-blurb"><span class="project-blurb-glyph" aria-hidden="true">𓂃</span><span>Transforming spoken Shakespeare into tactical action.</span></p></div>
+   </a>
+  </div>
+  <section class="writings-section" id="writings" aria-labelledby="writings-title">
+    <header class="writings-heading">
+      <span class="mark" aria-hidden="true">𓂃 ✎ ࣪˖</span>
+      <h2 id="writings-title">writings</h2>
+      <p>Essays, research notes, and other inquiries.</p>
+    </header>
+    <div class="writings-list" id="writings-list" aria-live="polite">
+      <div class="writing-soon">
+        <span class="writing-soon-mark" aria-hidden="true">✧</span>
+        <p>First dispatch forthcoming.</p>
+      </div>
+    </div>
+  </section>
+  <section class="home-about" id="home-about" aria-labelledby="home-about-title">
+    <div class="home-about-inner">
+      <div class="home-about-copy">
+        <span class="mark" aria-hidden="true">𓂃 ࣪˖𓉸 ִֶָ་༘࿐</span>
+        <h2 id="home-about-title">about</h2>
+        <p class="home-about-intro">I'm Rachel Heleva, a game designer, researcher, and curator working across computational poetics, games, interactive systems, and playable culture. <a href="#about" class="home-about-readmore">More about me ↗</a></p>
+        <ul class="home-about-facts">
+          <li>PhD student, Performance Studies · UC Davis</li>
+          <li>Researcher · SING Lab</li>
+          <li>Executive Director · Museum of Art and Digital Entertainment, Oakland</li>
+        </ul>
+        <nav class="home-about-socials" aria-label="Social and contact links">
+          <a href="https://www.linkedin.com/in/hlywa/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a href="https://github.com/hlywa/" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href="https://www.instagram.com/rachellheleva/" target="_blank" rel="noopener noreferrer">Instagram ↗</a>
+          <a href="https://x.com/rachelheleva" target="_blank" rel="noopener noreferrer">X ↗</a>
+          <a href="mailto:rlheleva@ucdavis.edu">Email ↗</a>
+        </nav>
+      </div>
+      <figure class="home-about-photo">
+        <img src="./images/3eaaff0a-0a3e-49e1-b414-7399d7dbec82.png" width="1502" height="1047" loading="lazy" decoding="async" alt="Rachel working during a colorful projection performance in pink and blue light.">
+      </figure>
+    </div>
+  </section>
+  <a class="gallery-top-link" href="#home" data-scroll-top>↑ return to orbit</a>
+ </div>
 </section>
 <section id="about" class="route about-cv" hidden>
 <div class="cv-wrap">
@@ -51,7 +110,7 @@
 <li><a href="mailto:rlheleva@ucdavis.edu">rlheleva@ucdavis.edu ↗</a></li>
 </ul></section>
 </div>
-<figure class="cv-photo"><img src="./images/rachel-performance.webp" width="360" height="251" alt="Rachel working during a colorful projected performance, surrounded by large pink and blue moving images." loading="lazy" decoding="async"></figure>
+<figure class="cv-photo"><img src="./images/3eaaff0a-0a3e-49e1-b414-7399d7dbec82.png" width="1502" height="1047" alt="Rachel working during a colorful projected performance, surrounded by large pink and blue moving images." loading="lazy" decoding="async"></figure>
 <footer class="cv-footer"><a href="#home">✧ back</a></footer>
 </div>
 </section>

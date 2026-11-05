@@ -4,20 +4,19 @@
  * the accessible HTML navigation charms belong.
  *
  * Angle, orbital radius, speed, and direction are all editable parameters.
- * The About, Work and Contact pages remain regular HTML.
+ * The About and Contact pages remain regular HTML; Work and Writings scroll to their sections.
  */
 (function () {
   const scene = document.getElementById("home");
   if (!scene || typeof window.p5 !== "function") return;
 
   const prefersLessMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const bodies = [
-    { name: "about", phase: -2.47, period: 35, direction: 1, scaleX: 0.88, scaleY: 0.77 },
-    { name: "work", phase: 1.10, period: 52, direction: -1, scaleX: 0.94, scaleY: 1.05 },
-    { name: "contact", phase: -3.25, period: 68, direction: 1, scaleX: 1.05, scaleY: 0.81 }
-  ].map((orbit) => ({
-    ...orbit,
-    element: scene.querySelector('[data-target="' + orbit.name + '"]')
+  // All four glyphs use ONE clock and one coordinate system. Keeping their
+  // angular slots evenly spaced prevents clustering and overlapping labels.
+  const bodies = ["about", "work", "contact", "writings"].map((name, index) => ({
+    name,
+    index,
+    element: scene.querySelector('[data-target="' + name + '"]')
   }));
 
   new window.p5((p) => {
@@ -47,12 +46,15 @@
     function placeNavigation() {
       const { cx, cy, rx, ry } = geometry();
       const elapsed = prefersLessMotion.matches ? 0 : (p.millis() - startedAt) / 1000;
+      const spin = (p.TWO_PI * elapsed) / 96; // slow, shared revolution
+      // Slots are separated by at least 78 degrees, even with the drift.
+      const initial = -2.20;
       for (const body of bodies) {
         if (!body.element) continue;
-        const theta = body.phase + body.direction * (p.TWO_PI * elapsed / body.period);
-        // An elliptical orbit, calculated from sine and cosine.
-        const x = cx + Math.cos(theta) * rx * body.scaleX;
-        const y = cy + Math.sin(theta) * ry * body.scaleY;
+        const drift = Math.sin(elapsed * 0.16 + body.index * 1.8) * 0.09;
+        const theta = initial + body.index * (p.TWO_PI / 4) + spin + drift;
+        const x = cx + Math.cos(theta) * rx;
+        const y = cy + Math.sin(theta) * ry;
         body.element.style.left = x + "px";
         body.element.style.top = y + "px";
       }
@@ -65,7 +67,7 @@
       p.pixelDensity(Math.min(window.devicePixelRatio || 1, 2));
       rebuildStars();
       startedAt = p.millis();
-      scene.classList.add("p5-ready");
+      scene.classList.add("p5-ready", "orbit-managed");
       placeNavigation();
     };
 
