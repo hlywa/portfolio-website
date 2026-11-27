@@ -74,3 +74,12 @@ footer { padding-top:20px; }
 .reading-article .shadows-facts {border-top:1px solid #333;margin:32px 0 0;padding:12px 0;font-size:16px;}
 .reading-page footer {border-top:1px solid #333;margin-top:28px;font-size:15px;}
 @media(max-width:480px){.reading-page{padding:24px 18px 40px}.reading-article{font-size:17px}.reading-nav{margin-bottom:24px}}
+
+/* Generated Notion pages use the existing reading layout. */
+.archive-body h2,.archive-body h3 {margin:30px 0 12px;}
+.archive-body pre {white-space:pre-wrap;overflow-wrap:anywhere;padding:14px;border:1px solid #333;font-size:14px;}
+.archive-body blockquote {margin:22px 0;padding-left:18px;border-left:1px solid #777;}
+.archive-body hr {border:0;border-top:1px solid #333;margin:24px 0;}
+.archive-media {margin:24px 0 30px;}
+.archive-media img {width:100%;height:auto;}
+.archive-media figcaption {font-size:14px;color:#aaa;margin-top:8px;}

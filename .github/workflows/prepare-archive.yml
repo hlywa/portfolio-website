@@ -1,6 +1,9 @@
 name: Prepare creative archive update
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["scripts/sync-notion.mjs", "scripts/archive-pages.mjs"]
 permissions:
   contents: write
 concurrency:
@@ -27,6 +30,7 @@ jobs:
       - name: Prepare review branch
         run: |
           git add -- archive-data.js
+          git add -A -- works
           if [ -d images/archive ]; then git add -A -- images/archive; fi
           if git diff --cached --quiet; then
             echo "No archive changes."
