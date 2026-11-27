@@ -74,3 +74,9 @@ footer { padding-top:20px; }
 .reading-article .shadows-facts {border-top:1px solid #333;margin:32px 0 0;padding:12px 0;font-size:16px;}
 .reading-page footer {border-top:1px solid #333;margin-top:28px;font-size:15px;}
 @media(max-width:480px){.reading-page{padding:24px 18px 40px}.reading-article{font-size:17px}.reading-nav{margin-bottom:24px}}
+
+.reading-article figure {margin:28px 0;}
+.reading-article figcaption {font-size:14px;color:#aaa;margin-top:8px;}
+.reading-article blockquote {border-left:1px solid #777;padding-left:18px;margin:24px 0;color:#ccc;}
+.reading-article pre {overflow-x:auto;background:#141414;padding:14px;font-size:14px;line-height:1.5;}
+.reading-article hr {border:0;border-top:1px solid #333;margin:28px 0;}

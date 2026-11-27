@@ -28,6 +28,7 @@ jobs:
         run: |
           git add -- archive-data.js
           if [ -d images/archive ]; then git add -A -- images/archive; fi
+          if [ -d works ]; then git add -A -- works; fi
           if git diff --cached --quiet; then
             echo "No archive changes."
             exit 0
