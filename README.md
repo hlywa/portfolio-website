@@ -14,6 +14,10 @@ Existing essays remain in essays/; add published essays to writings.js as before
 
 Design review branch: creative-archive-redesign. Do not merge until the preview is reviewed.
 
+## Now and Upcoming
+
+Edit the two authored Now statements in index.html, including inline links. The gallery's Notion Now checkbox does not generate these statements. Upcoming shows the manually curated public event links from index.html, plus approved event records from the Notion export when connected. Remove a curated event when its imported record should take over; duplicate titles or links are suppressed, and expired events are removed from the display. A month-only event uses start/end bounds for display, not a confirmed event day. Do not commit private event links.
+
 ## Connect Notion (one-time setup)
 
 1. Create a read-only internal integration in Rachel Zone. Grant access only to Creative Archive, not the dashboard or editorial drafts. Do not make the archive public.

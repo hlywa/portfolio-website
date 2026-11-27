@@ -124,13 +124,24 @@ function startGallery() {
  for(const type of [...new Set(entries.map(e=>e.type))].sort()){const opt=el("option",type);opt.value=type;category.append(opt)}
  category.addEventListener("change",render);
  $("reset").addEventListener("click",()=>{order=[...initial];active=[...initial];category.value="all";redrawLenses();render()});
- const now=$("now-list");now.replaceChildren();
- for(const entry of entries.filter(e=>e.now)){const item=el("li");item.append(link(entry.title,entry.url));now.append(item)}
- if(!now.children.length)now.append(el("li","No current entries listed."));
- const upcoming=$("upcoming-list");upcoming.replaceChildren();
+ // Now is authored directly in index.html: preserve prose and inline links.
+ const upcoming=$("upcoming-list");
  const date=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Los_Angeles",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date());
  const today=["year","month","day"].map(t=>date.find(x=>x.type===t).value).join("-");
- for(const e of entries.filter(e=>e.event&&/^\d{4}-\d{2}-\d{2}/.test(e.date||"")&&(e.endDate||e.date).slice(0,10)>=today).sort((a,b)=>a.date.localeCompare(b.date))){const item=el("li");item.append(el("span",e.date.slice(0,10)+" · "),link(e.title,e.url));upcoming.append(item)}
+ // Curated events are the fallback until the Notion export is connected.
+ // A curated month-only entry remains visible through that month.
+ const curated=[...upcoming.querySelectorAll("li[data-start]")];
+ const key=u=>String(u||"").replace(/\/$/,"").toLowerCase();
+ const curatedLinks=new Set(curated.map(li=>key(li.querySelector("a")?.href)));
+ const curatedTitles=new Set(curated.map(li=>li.querySelector("a")?.textContent.trim().toLowerCase()));
+ const visibleEvents=curated.filter(li=>li.dataset.end>=today);
+ for(const e of entries.filter(e=>e.event&&/^\d{4}-\d{2}-\d{2}/.test(e.date||"")&&(e.endDate||e.date).slice(0,10)>=today)){
+  if(curatedLinks.has(key(e.url))||curatedTitles.has(e.title.trim().toLowerCase()))continue;
+  const item=el("li");item.dataset.start=e.date.slice(0,10);
+  const label=new Intl.DateTimeFormat("en-US",{month:"short",day:"numeric",timeZone:"UTC"}).format(new Date(e.date.slice(0,10)+"T12:00:00Z"));
+  item.append(el("span",label+" · "),link(e.title,e.url));visibleEvents.push(item);
+ }
+ upcoming.replaceChildren(...visibleEvents.sort((a,b)=>a.dataset.start.localeCompare(b.dataset.start)));
  if(!upcoming.children.length)upcoming.append(el("li","No public events listed."));
  function openHash(){const id=location.hash.slice(1);const target=$(id);if(target?.tagName==="DETAILS"){target.open=true;target.scrollIntoView()}}
  window.addEventListener("hashchange",openHash);openHash();redrawLenses();render();
