@@ -84,5 +84,19 @@ async function sync(){
   console.log("Exported "+entries.length+" approved entries. Review the diff before publishing.");
  }finally{await rm(stage,{recursive:true,force:true})}
 }
+async function checkConnection(){
+ const token=process.env.NOTION_TOKEN,id=process.env.NOTION_DATA_SOURCE_ID;
+ if(!token||!id||!/^[-0-9a-f]{32,36}$/i.test(id))throw Error("Missing or invalid Notion secret/variable");
+ const response=await fetch("https://api.notion.com/v1/data_sources/"+id,{headers:{Authorization:"Bearer "+token,"Notion-Version":"2025-09-03"},signal:AbortSignal.timeout(30000)});
+ if(!response.ok)throw Error("Notion data source read failed (HTTP "+response.status+"). Check token, ID and database connection.");
+ const schema=await response.json();
+ const expected={Title:"title",Type:"select",Themes:"multi_select",Date:"date",Status:"select","Public description":"rich_text",Credits:"rich_text",Link:"url",Featured:"checkbox",Now:"checkbox","Public event":"checkbox",Publish:"checkbox",Cover:"files","Games image":"files","Systems image":"files","Verse image":"files"};
+ for(const [name,type] of Object.entries(expected))if(schema.properties?.[name]?.type!==type)throw Error("Archive schema mismatch: "+name);
+ const rows=await getRows();
+ if(rows.some(row=>row.properties?.Publish?.checkbox!==true))throw Error("Notion returned an unapproved entry");
+ const approved=rows.map(normalizePage).filter(Boolean);
+ console.log("Notion authentication, archive schema and approved-only query verified. "+approved.length+" approved entries. No content or images exported.");
+}
 if(process.argv.includes("--test")){runTests();console.log("9 archive mapping tests passed");}
+else if(process.argv.includes("--check-connection"))checkConnection().catch(error=>{console.error("Connection check failed: "+error.message);process.exitCode=1});
 else sync().catch(error=>{console.error("Archive sync failed: "+(error.message||"unknown error"));process.exitCode=1});
