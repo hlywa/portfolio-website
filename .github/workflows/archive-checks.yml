@@ -1,0 +1,36 @@
+name: Creative archive checks
+on:
+  pull_request:
+  push:
+    branches: [creative-archive-redesign]
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: |
+          node --check archive-gallery.js
+          node --check archive-data.js
+          node --check writings.js
+          node --check scripts/sync-notion.mjs
+          node scripts/sync-notion.mjs --test
+  notion-connection:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/creative-archive-redesign'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify Notion access without exporting
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATA_SOURCE_ID: ${{ vars.NOTION_DATA_SOURCE_ID }}
+        run: node scripts/sync-notion.mjs --check-connection

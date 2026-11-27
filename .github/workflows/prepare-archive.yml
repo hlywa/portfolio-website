@@ -1,0 +1,40 @@
+name: Prepare creative archive update
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: creative-archive-sync
+  cancel-in-progress: false
+jobs:
+  export:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate and export
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATA_SOURCE_ID: ${{ vars.NOTION_DATA_SOURCE_ID }}
+        run: |
+          node scripts/sync-notion.mjs --test
+          node scripts/sync-notion.mjs
+          node --check archive-data.js
+          node --check archive-gallery.js
+      - name: Prepare review branch
+        run: |
+          git add -- archive-data.js
+          if [ -d images/archive ]; then git add -A -- images/archive; fi
+          if git diff --cached --quiet; then
+            echo "No archive changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git switch -c "archive-sync-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          git commit -m "Update approved creative archive"
+          git push origin HEAD
+          echo "Review this branch before merging." >> "$GITHUB_STEP_SUMMARY"

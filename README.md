@@ -1,46 +1,28 @@
-<div align="center">
-
-# 𓂃 ࣪˖𓉸 ִֶָ་༘࿐
-
-### a little corner of the internet
-
-Games, research, writing, and other experiments.
-
-A personal website to wander through, play with, and discover things in.
-
-✧˖*°࿐
-
-**about · work · writings · contact**
+# rachel heleva · creative archive
 
 ｡･:*˚:✧｡
 
-*Some things are obvious. Others reward curiosity.*
+Plain HTML, CSS and JavaScript. Open index.html locally. The original essay stylesheet and galaxy source are retained for compatibility/history; the homepage no longer loads them.
 
-</div>
+## Gallery
+The three themes toggle visibility, and the adjacent arrow moves a theme to first priority. The leading matching image is used when present; otherwise the entry's cover remains. The star resets the gallery. Type and featured filters are independent. Existing public project details and CV are on the same page.
 
----
+## Content
+archive-data.js is the future Notion export (initially empty). Existing public items remain as a baseline in archive-gallery.js. Matching titles merge with their prior public entries. No private Notion drafts have been exported. Only explicitly approved fields and media should enter the public repository. The sync script and review workflow are included. Credential setup and live integration testing remain required.
 
-Made with HTML, CSS, JavaScript, and p5.js. A work in progress.
+Existing essays remain in essays/; add published essays to writings.js as before. Do not commit unpublished submissions or credentials.
 
-To run locally: open `index.html` in your browser.
+Design review branch: creative-archive-redesign. Do not merge until the preview is reviewed.
 
-## Publishing an essay
+## Now and Upcoming
 
-The homepage has a Writings section below Selected Work. Until the first essay is live, it displays a simple “First dispatch forthcoming” placeholder.
+Edit the two authored Now statements in index.html, including inline links. The gallery's Notion Now checkbox does not generate these statements. Upcoming shows the manually curated public event links from index.html, plus approved event records from the Notion export when connected. Remove a curated event when its imported record should take over; duplicate titles or links are suppressed, and expired events are removed from the display. A month-only event uses start/end bounds for display, not a confirmed event day. Do not commit private event links.
 
-1. Copy `essays/_template.html` to `essays/my-essay-slug.html`.
-2. Replace the example title, publication date, deck, and paragraphs with your writing. The standalone page inherits the site's typography from `style.css`.
-3. Open `writings.js` and add an entry to the `writings` array:
+## Connect Notion (one-time setup)
 
-```js
-{
-  title: "Your essay title",
-  date: "2026-11-15",
-  summary: "One or two sentences describing the essay.",
-  url: "./essays/my-essay-slug.html"
-}
-```
+1. Create a read-only internal integration in Rachel Zone. Grant access only to Creative Archive, not the dashboard or editorial drafts. Do not make the archive public.
+2. In GitHub Settings > Secrets and variables > Actions, create repository secret NOTION_TOKEN with the token, and variable NOTION_DATA_SOURCE_ID with the archive data-source UUID (not page ID). Never put credentials in Git, frontend code, or chat.
+3. Review and merge redesign first. On main, manually trigger Prepare creative archive update. It exports approved entries, runs checks, and pushes a review branch only. Review and merge that branch via PR. A bot commit alone does not trigger a branch-based Pages build. Verify actual deployment settings before release.
+4. Or run locally with Node 22: node scripts/sync-notion.mjs --test, then node scripts/sync-notion.mjs with environment variables set securely. Review and batch changes.
 
-Commit both files. The homepage automatically lists essays newest first, removes the placeholder once an entry exists, and links readers to the essay. No CMS, subscription, or additional hosting is needed.
-
-The orbiting Writings glyph scrolls to the archive. The Work glyph scrolls to the selected project grid. The About and Contact glyphs navigate to their pages.
+Only Publish=true records are exported; no page bodies, drafts, private notes or signed Notion file URLs are written. The first image in each designated file property is copied into images/archive (raster images up to 10 MB). Public Git history can retain previously published records or assets even after unchecking Publish; never approve confidential material. Existing public baseline items stay visible until deliberately removed from archive-gallery.js. Matching titles merge with the baseline; use unique titles. The initial workflow deliberately does not schedule or auto-merge updates.
