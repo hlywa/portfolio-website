@@ -76,7 +76,8 @@ function selectWorks(entries,order,active,type) {
  });
 }
 function chosenImage(entry,order,active) {
- for(const word of order) if(active.includes(word)&&entry.themes.includes(word)&&entry.images?.[word])return entry.images[word];
+ const leading=order.find(word=>active.includes(word)&&entry.themes.includes(word));
+ if(leading&&entry.images?.[leading])return entry.images[leading];
  return entry.cover||"";
 }
 function mergeWorks(legacy, imported) {
