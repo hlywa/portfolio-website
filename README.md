@@ -1,46 +1,15 @@
-<div align="center">
-
-# 𓂃 ࣪˖𓉸 ִֶָ་༘࿐
-
-### a little corner of the internet
-
-Games, research, writing, and other experiments.
-
-A personal website to wander through, play with, and discover things in.
-
-✧˖*°࿐
-
-**about · work · writings · contact**
+# rachel heleva · creative archive
 
 ｡･:*˚:✧｡
 
-*Some things are obvious. Others reward curiosity.*
+Plain HTML, CSS and JavaScript. Open index.html locally. The original essay stylesheet and galaxy source are retained for compatibility/history; the homepage no longer loads them.
 
-</div>
+## Gallery
+The three themes toggle visibility, and the adjacent arrow moves a theme to first priority. The leading matching image is used when present; otherwise the entry's cover remains. The star resets the gallery. Type and featured filters are independent. Existing public project details and CV are on the same page.
 
----
+## Content
+archive-data.js is the future Notion export (initially empty). Existing public items remain as a baseline in archive-gallery.js. Matching titles merge with their prior public entries. No private Notion drafts have been exported. Only explicitly approved fields and media should enter the public repository. A separate sync implementation and credential setup are still required.
 
-Made with HTML, CSS, JavaScript, and p5.js. A work in progress.
+Existing essays remain in essays/; add published essays to writings.js as before. Do not commit unpublished submissions or credentials.
 
-To run locally: open `index.html` in your browser.
-
-## Publishing an essay
-
-The homepage has a Writings section below Selected Work. Until the first essay is live, it displays a simple “First dispatch forthcoming” placeholder.
-
-1. Copy `essays/_template.html` to `essays/my-essay-slug.html`.
-2. Replace the example title, publication date, deck, and paragraphs with your writing. The standalone page inherits the site's typography from `style.css`.
-3. Open `writings.js` and add an entry to the `writings` array:
-
-```js
-{
-  title: "Your essay title",
-  date: "2026-11-15",
-  summary: "One or two sentences describing the essay.",
-  url: "./essays/my-essay-slug.html"
-}
-```
-
-Commit both files. The homepage automatically lists essays newest first, removes the placeholder once an entry exists, and links readers to the essay. No CMS, subscription, or additional hosting is needed.
-
-The orbiting Writings glyph scrolls to the archive. The Work glyph scrolls to the selected project grid. The About and Contact glyphs navigate to their pages.
+Design review branch: creative-archive-redesign. Do not merge until the preview is reviewed.
