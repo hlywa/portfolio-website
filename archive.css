@@ -60,3 +60,17 @@ footer { padding-top:20px; }
 
 /* The star moves by changing characters, not by shifting an image. */
 #reset { min-width: 8ch; text-align: left; white-space: nowrap; }
+
+/* Quiet standalone reading pages, shared by projects and future essays. */
+.reading-page {max-width:760px;padding:36px 26px 56px;}
+.reading-nav {display:flex;justify-content:space-between;align-items:center;gap:16px;padding-bottom:24px;margin-bottom:34px;border-bottom:1px solid #333;font-size:15px;}
+.reading-article {font-size:18px;line-height:1.75;overflow-wrap:anywhere;}
+.reading-article h1 {font-size:clamp(30px,5vw,44px);margin:0 0 14px;}
+.reading-article .shadows-deck {font-size:19px;color:#bbb;line-height:1.5;margin-bottom:24px;}
+.reading-article .detail-cover {margin:24px 0 30px;}
+.reading-article img {display:block;max-width:100%;height:auto;}
+.reading-article .detail-cover img {width:280px;}
+.reading-article p {margin:0 0 20px;}
+.reading-article .shadows-facts {border-top:1px solid #333;margin:32px 0 0;padding:12px 0;font-size:16px;}
+.reading-page footer {border-top:1px solid #333;margin-top:28px;font-size:15px;}
+@media(max-width:480px){.reading-page{padding:24px 18px 40px}.reading-article{font-size:17px}.reading-nav{margin-bottom:24px}}

@@ -11,7 +11,7 @@ const LEGACY=[
     ],
     "status": "In progress",
     "cover": "./images/work-in-countless-shadows.svg",
-    "url": "#project-in-countless-shadows",
+    "url": "./works/in-countless-shadows.html",
     "featured": true,
     "now": true,
     "description": "Recomposing Shakespeare's sonnets through play."
@@ -27,7 +27,7 @@ const LEGACY=[
     ],
     "status": "In progress",
     "cover": "./images/work-you-are-rhyme.svg",
-    "url": "#project-you-are-rhyme",
+    "url": "./works/you-are-rhyme.html",
     "featured": true,
     "now": true,
     "description": "Transforming spoken Shakespeare into tactical action."
@@ -106,17 +106,17 @@ function chosenImage(entry,order,active) {
 }
 function mergeWorks(legacy, imported) {
  const byTitle=new Map(legacy.map(e=>[e.title.trim().toLowerCase(),e]));
- for(const e of imported){const key=e.title.trim().toLowerCase();const base=byTitle.get(key);byTitle.set(key,{...base,...e,cover:e.cover||base?.cover,url:base?.url?.startsWith("#")?base.url:e.url||base?.url});}
+ for(const e of imported){const key=e.title.trim().toLowerCase();const base=byTitle.get(key);byTitle.set(key,{...base,...e,cover:e.cover||base?.cover,url:base?.url?.startsWith("./works/")?base.url:e.url||base?.url});}
  return [...byTitle.values()];
 }
 function startGallery() {
  const initial=["games","systems","verse"];
  let order=[...initial],active=[...initial];
- const entries=mergeWorks(LEGACY,Array.isArray(window.creativeArchive)?window.creativeArchive:[]);
+ const entries=mergeWorks([...LEGACY,...(window.publishedWriting||[])],Array.isArray(window.creativeArchive)?window.creativeArchive:[]);
  const $=id=>document.getElementById(id);
  const category=$("category"),gallery=$("gallery"),lenses=$("lenses");
  const el=(tag,text,cls)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node};
- const safeURL=(url)=>{if(typeof url!=="string")return "";if(/^#[-\w]+$/.test(url)||/^\.\/images\/[\w./-]+$/.test(url)&&!url.includes(".."))return url;try{const parsed=new URL(url);return parsed.protocol==="https:"?parsed.href:""}catch{return ""}};
+ const safeURL=(url)=>{if(typeof url!=="string")return "";if(/^\.\/(works|essays)\/[a-z0-9-]+\.html$/.test(url))return url;if(/^#[-\w]+$/.test(url)||/^\.\/images\/[\w./-]+$/.test(url)&&!url.includes(".."))return url;try{const parsed=new URL(url);return parsed.protocol==="https:"?parsed.href:""}catch{return ""}};
  const link=(title,url)=>{const href=safeURL(url);if(!href)return el("span",title);const node=el("a",title);node.href=href;return node};
  function redrawLenses(focus) {
   lenses.replaceChildren();
@@ -168,7 +168,7 @@ function startGallery() {
  }
  upcoming.replaceChildren(...visibleEvents.sort((a,b)=>a.dataset.start.localeCompare(b.dataset.start)));
  if(!upcoming.children.length)upcoming.append(el("li","No public events listed."));
- function openHash(){const id=location.hash.slice(1);const target=$(id);if(target?.tagName==="DETAILS"){target.open=true;target.scrollIntoView()}}
+ function openHash(){const old={"#project-in-countless-shadows":"./works/in-countless-shadows.html","#project-you-are-rhyme":"./works/you-are-rhyme.html"};if(old[location.hash]){location.replace(old[location.hash]);return;}if(location.hash==="#writings"){$("work").scrollIntoView();}}
  window.addEventListener("hashchange",openHash);openHash();redrawLenses();render();animateStar($("reset"));
 }
 startGallery();

@@ -5,14 +5,14 @@
 Plain HTML, CSS and JavaScript. Open index.html locally. The original essay stylesheet and galaxy source are retained for compatibility/history; the homepage no longer loads them.
 
 ## Gallery
-The three themes toggle visibility, and the adjacent arrow moves a theme to first priority. The leading matching image is used when present; otherwise the entry's cover remains. The star resets the gallery. Public categories are Games, Experiments, Gatherings, Curation, Talks, Writing and Press (with Projects or Recognition only if an entry requires them). Notion retains its existing type properties; the gallery maps them to public categories. Use the medium rather than Collaboration for new entries. The star cycles through text frames, respects reduced-motion preferences and pauses on hover, focus and when the tab is hidden. Existing public project details and CV are on the same page.
+The three themes toggle visibility, and the adjacent arrow moves a theme to first priority. The leading matching image is used when present; otherwise the entry's cover remains. The star resets the gallery. Public categories are Games, Experiments, Gatherings, Curation, Talks, Writing and Press (with Projects or Recognition only if an entry requires them). Notion retains its existing type properties; the gallery maps them to public categories. Use the medium rather than Collaboration for new entries. The star cycles through text frames, respects reduced-motion preferences and pauses on hover, focus and when the tab is hidden. The homepage is an overview; project details open standalone reading pages in works/. Writing belongs to the same gallery and has its own category. The CV remains expandable on the homepage.
 
 ## Content
 archive-data.js is the future Notion export (initially empty). Existing public items remain as a baseline in archive-gallery.js. Matching titles merge with their prior public entries. No private Notion drafts have been exported. Only explicitly approved fields and media should enter the public repository. The sync script and review workflow are included. Credential setup and live integration testing remain required.
 
-Existing essays remain in essays/; add published essays to writings.js as before. Do not commit unpublished submissions or credentials.
+Existing essays remain in essays/; add published essays to writings.js for the unified archive. Standalone pages share archive.css reading styles. New Notion-generated long-form pages still require an explicit public-body export implementation. Do not commit unpublished submissions or credentials.
 
-Design review branch: creative-archive-redesign. Do not merge until the preview is reviewed.
+The redesign is deployed on main. Review and test subsequent changes in coherent batches.
 
 ## Now and Upcoming
 
