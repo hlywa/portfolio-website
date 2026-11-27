@@ -11,6 +11,8 @@ const writings = [];
 
 const list = document.getElementById("writings-list");
 if (list && writings.length) {
+  document.getElementById("writings").hidden = false;
+  document.getElementById("writing-nav").hidden = false;
   list.replaceChildren();
   const sorted = [...writings].sort((a, b) => b.date.localeCompare(a.date));
   for (const entry of sorted) {
