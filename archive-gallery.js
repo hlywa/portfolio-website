@@ -104,15 +104,18 @@ function chosenImage(entry,order,active) {
  if(leading&&entry.images?.[leading])return entry.images[leading];
  return entry.cover||"";
 }
-function mergeWorks(legacy, imported) {
- const byTitle=new Map(legacy.map(e=>[e.title.trim().toLowerCase(),e]));
- for(const e of imported){const key=e.title.trim().toLowerCase();const base=byTitle.get(key);byTitle.set(key,{...base,...e,cover:e.cover||base?.cover,url:base?.url?.startsWith("./works/")?base.url:e.url||base?.url});}
+function mergeWorks(legacy, imported, managed=[]) {
+ const baseline=new Map(legacy.map(e=>[e.title.trim().toLowerCase(),e]));
+ const byTitle=new Map([...baseline].filter(([key])=>!managed.includes(key)));
+ for(const e of imported){const key=e.legacyTitle||e.title.trim().toLowerCase(),base=baseline.get(key);
+ const url=e.openAs?e.url:(base?.url?.startsWith("./works/")?base.url:e.url||base?.url);
+ byTitle.set(key,{...base,...e,date:e.date||base?.date||"",cover:e.cover||base?.cover,url});}
  return [...byTitle.values()];
 }
 function startGallery() {
  const initial=["games","systems","verse"];
  let order=[...initial],active=[...initial];
- const entries=mergeWorks([...LEGACY,...(window.publishedWriting||[])],Array.isArray(window.creativeArchive)?window.creativeArchive:[]);
+ const entries=mergeWorks([...LEGACY,...(window.publishedWriting||[])],Array.isArray(window.creativeArchive)?window.creativeArchive:[],Array.isArray(window.creativeArchiveManaged)?window.creativeArchiveManaged:[]);
  const $=id=>document.getElementById(id);
  const category=$("category"),gallery=$("gallery"),lenses=$("lenses");
  const el=(tag,text,cls)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node};
