@@ -106,7 +106,7 @@ function chosenImage(entry,order,active) {
 }
 function mergeWorks(legacy, imported) {
  const byTitle=new Map(legacy.map(e=>[e.title.trim().toLowerCase(),e]));
- for(const e of imported){const key=e.title.trim().toLowerCase();const base=byTitle.get(key);byTitle.set(key,{...base,...e,cover:e.cover||base?.cover,url:base?.url?.startsWith("./works/")?base.url:e.url||base?.url});}
+ for(const e of imported){const key=e.title.trim().toLowerCase();const base=byTitle.get(key);byTitle.set(key,{...base,...e,cover:e.cover||base?.cover,url:e.openAs?e.url:(base?.url?.startsWith("./works/")?base.url:e.url||base?.url)});}
  return [...byTitle.values()];
 }
 function startGallery() {

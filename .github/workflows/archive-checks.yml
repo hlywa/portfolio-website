@@ -2,7 +2,7 @@ name: Creative archive checks
 on:
   pull_request:
   push:
-    branches: [creative-archive-redesign]
+    branches: [creative-archive-redesign, archive-page-publisher]
 permissions:
   contents: read
 jobs:
@@ -20,7 +20,7 @@ jobs:
           node --check scripts/sync-notion.mjs
           node scripts/sync-notion.mjs --test
   notion-connection:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/creative-archive-redesign'
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/creative-archive-redesign' || github.ref == 'refs/heads/archive-page-publisher')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
