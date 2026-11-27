@@ -14,7 +14,7 @@ const LEGACY=[
     "url": "./works/in-countless-shadows.html",
     "featured": true,
     "now": true,
-    "description": "Recomposing Shakespeare's sonnets through play."
+    "description": "An experimental poetry game that makes the sonnet form playable."
   },
   {
     "id": "legacy-rhyme",
