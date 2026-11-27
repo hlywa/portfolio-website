@@ -57,3 +57,6 @@ summary { cursor:pointer; }
 footer { padding-top:20px; }
 @media(max-width:720px){main{padding:30px 18px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 14px}.activity,.cv-grid{grid-template-columns:1fr;gap:16px}}
 @media(max-width:380px){.gallery{grid-template-columns:1fr}.lens button{padding-inline:7px}}
+
+/* The star moves by changing characters, not by shifting an image. */
+#reset { min-width: 8ch; text-align: left; white-space: nowrap; }

@@ -68,9 +68,33 @@ const LEGACY=[
     "description": "ThinkyCon, Thinky Games"
   }
 ];
+function publicCategory(entry){
+ if(entry.id==="legacy-rhyme"||entry.title.trim().toLowerCase()==="you are rhyme")return "Games";
+ const map={Game:"Games",Games:"Games",Tinkering:"Experiments",Experiment:"Experiments",Experiments:"Experiments",Research:"Experiments",Gathering:"Gatherings",Gatherings:"Gatherings",Exhibition:"Curation",Curation:"Curation",Talk:"Talks",Talks:"Talks",Teaching:"Talks",Writing:"Writing",Press:"Press",Recognition:"Recognition",Collaboration:"Projects"};
+ return map[entry.type]||"Projects";
+}
+function starFrames(){
+ const chars=Array.from("｡･:*˚:✧｡"),star=chars.splice(6,1)[0];
+ const positions=[6,5,4,3,2,3,4,5,6];
+ return positions.map((position,index)=>{const frame=[...chars];frame.splice(position,0,index%2===0?star:"✦");return frame.join("")});
+}
+function animateStar(button){
+ const frames=starFrames(),motion=window.matchMedia("(prefers-reduced-motion: reduce)");
+ let timer=null,index=0;
+ const stop=()=>{if(timer!==null){clearInterval(timer);timer=null}button.textContent=frames[0];index=0};
+ const start=()=>{if(motion.matches||document.hidden||button.matches(":hover")||document.activeElement===button)return; if(timer!==null)return;timer=setInterval(()=>{index=(index+1)%frames.length;button.textContent=frames[index]},800)};
+ const update=()=>{stop();start()};
+ button.addEventListener("pointerenter",stop);
+ button.addEventListener("pointerleave",start);
+ button.addEventListener("focus",stop);
+ button.addEventListener("blur",start);
+ document.addEventListener("visibilitychange",update);
+ if(motion.addEventListener)motion.addEventListener("change",update);else motion.addListener(update);
+ update();
+}
 function selectWorks(entries,order,active,type) {
  const selected=order.filter(x=>active.includes(x));
- return entries.filter(e=>(type==="all"||type==="featured"&&e.featured||e.type===type)&&(selected.length===3||e.themes.some(x=>selected.includes(x)))).sort((a,b)=>{
+ return entries.filter(e=>(type==="all"||publicCategory(e)===type)&&(selected.length===3||e.themes.some(x=>selected.includes(x)))).sort((a,b)=>{
  for(const word of selected){const d=Number(b.themes.includes(word))-Number(a.themes.includes(word));if(d)return d;}
  return (b.date||"").localeCompare(a.date||"");
  });
@@ -113,15 +137,16 @@ function startGallery() {
    const card=el("article",undefined,"work-card");
    const src=safeURL(chosenImage(entry,order,active));
    if(src){const img=el("img");img.src=src;img.alt=entry.title+" — "+(entry.imageAlt||"project documentation");img.loading="lazy";img.decoding="async";const href=safeURL(entry.url);if(href){const a=el("a");a.href=href;a.append(img);card.append(a)}else card.append(img)}
-   const h=el("h3");h.append(link(entry.title,entry.url));card.append(h,el("p",[entry.type,entry.date?.slice(0,4)].filter(Boolean).join(" · "),"meta"));
+   const h=el("h3");h.append(link(entry.title,entry.url));card.append(h,el("p",[publicCategory(entry),entry.date?.slice(0,4)].filter(Boolean).join(" · "),"meta"));
    if(entry.credits)card.append(el("p",entry.credits,"meta"));
    if(entry.description)card.append(el("p",entry.description,"meta"));
    gallery.append(card);
   }
   $("gallery-status").textContent=visible.length?`${visible.length} / ${entries.length}`:"No entries match this selection.";
  }
- const featured=el("option","Featured");featured.value="featured";category.append(featured);
- for(const type of [...new Set(entries.map(e=>e.type))].sort()){const opt=el("option",type);opt.value=type;category.append(opt)}
+ const preferred=["Games","Experiments","Gatherings","Curation","Talks","Writing","Press","Recognition","Projects"];
+ const available=new Set(entries.map(publicCategory));
+ for(const type of preferred.filter(x=>available.has(x))){const opt=el("option",type);opt.value=type;category.append(opt)}
  category.addEventListener("change",render);
  $("reset").addEventListener("click",()=>{order=[...initial];active=[...initial];category.value="all";redrawLenses();render()});
  // Now is authored directly in index.html: preserve prose and inline links.
@@ -144,6 +169,6 @@ function startGallery() {
  upcoming.replaceChildren(...visibleEvents.sort((a,b)=>a.dataset.start.localeCompare(b.dataset.start)));
  if(!upcoming.children.length)upcoming.append(el("li","No public events listed."));
  function openHash(){const id=location.hash.slice(1);const target=$(id);if(target?.tagName==="DETAILS"){target.open=true;target.scrollIntoView()}}
- window.addEventListener("hashchange",openHash);openHash();redrawLenses();render();
+ window.addEventListener("hashchange",openHash);openHash();redrawLenses();render();animateStar($("reset"));
 }
 startGallery();
