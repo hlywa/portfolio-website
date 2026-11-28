@@ -33,6 +33,11 @@ select { padding:4px 8px; border:1px solid #777; background:#111; font-size:14px
 .gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:30px 22px; align-items:start; }
 .work-card { min-width:0; overflow-wrap:anywhere; }
 .work-card img { display:block; width:100%; height:auto; aspect-ratio:4 / 3; object-fit:cover; object-position:center; }
+/* Preserve typography and interface details in text-heavy covers. Stable record IDs survive Notion re-exports. */
+.work-card img[src*="/0503daef6a39eb7f2773a02c-"],
+.work-card img[src*="/1a2ac2589b4827843c361178-"],
+.work-card img[src*="/4315bb3a5abe9235f5ac5de1-"],
+.work-card img[src*="/8bf024b51662966f88a02fa2-"] { object-fit:contain; background:#000; }
 .work-card h3 { margin:8px 0 2px; }
 .meta { font-size:13px; color:#aaa; }
 #gallery-status { margin:14px 0 0; }
