@@ -59,7 +59,8 @@ summary { cursor:pointer; }
 .cv-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px 30px; margin-top:10px; }
 .cv-grid ul { padding-left:18px; }
 .cv-photo { margin:22px 0 0; }
-.cv-photo img { max-width:100%; width:500px; height:auto; }
+.cv-photo img { display:block; width:100%; max-width:100%; height:auto; aspect-ratio: 5 / 2; object-fit:cover; object-position:50% 82%; }
+@media(max-width:480px){.cv-photo img {aspect-ratio: 16 / 9; object-position:50% 75%;}}
 .writing-entry { display:block; padding:12px 0; }
 footer { padding-top:20px; }
 @media(max-width:720px){main{padding:30px 18px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 14px}.activity,.cv-grid{grid-template-columns:1fr;gap:16px}}

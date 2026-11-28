@@ -92,11 +92,11 @@ function animateStar(button){
  if(motion.addEventListener)motion.addEventListener("change",update);else motion.addListener(update);
  update();
 }
-function selectWorks(entries,order,active,type) {
+function selectWorks(entries,order,active,type,prioritize=false) {
  const selected=order.filter(x=>active.includes(x));
  return entries.filter(e=>(type==="all"||publicCategory(e)===type)&&(selected.length===3||e.themes.some(x=>selected.includes(x)))).sort((a,b)=>{
- for(const word of selected){const d=Number(b.themes.includes(word))-Number(a.themes.includes(word));if(d)return d;}
- return (b.date||"").localeCompare(a.date||"");
+ if(prioritize)for(const word of selected){const d=Number(b.themes.includes(word))-Number(a.themes.includes(word));if(d)return d;}
+ return (b.date||"").localeCompare(a.date||"") || Number(b.status==="In progress")-Number(a.status==="In progress") || a.title.localeCompare(b.title);
  });
 }
 function chosenImage(entry,order,active) {
@@ -114,7 +114,7 @@ function mergeWorks(legacy, imported, managed=[]) {
 }
 function startGallery() {
  const initial=["games","systems","verse"];
- let order=[...initial],active=[...initial];
+ let order=[...initial],active=[...initial],prioritize=false;
  const entries=mergeWorks([...LEGACY,...(window.publishedWriting||[])],Array.isArray(window.creativeArchive)?window.creativeArchive:[],Array.isArray(window.creativeArchiveManaged)?window.creativeArchiveManaged:[]);
  const $=id=>document.getElementById(id);
  const category=$("category"),gallery=$("gallery"),lenses=$("lenses");
@@ -124,17 +124,17 @@ function startGallery() {
  function redrawLenses(focus) {
   lenses.replaceChildren();
   for(const word of order){
-   const group=el("span",undefined,"lens");group.dataset.first=String(word===order[0]);
+   const group=el("span",undefined,"lens");group.dataset.first=String(prioritize&&word===order[0]);
    const btn=el("button",word);btn.type="button";btn.id="theme-"+word;btn.setAttribute("aria-pressed",String(active.includes(word)));btn.title="Toggle "+word;
    btn.addEventListener("click",()=>{active=active.includes(word)?active.filter(x=>x!==word):[...active,word];redrawLenses(btn.id);render()});
    const up=el("button","↑","priority");up.type="button";up.id="priority-"+word;up.setAttribute("aria-label","Prioritize "+word);up.title="Move "+word+" to first";
-   up.addEventListener("click",()=>{order=[word,...order.filter(x=>x!==word)];if(!active.includes(word))active.push(word);redrawLenses(up.id);render()});
+   up.addEventListener("click",()=>{prioritize=true;order=[word,...order.filter(x=>x!==word)];if(!active.includes(word))active.push(word);redrawLenses(up.id);render()});
    group.append(btn,up);lenses.append(group);
   }
   if(focus)$(focus)?.focus();
  }
  function render(){
-  const visible=selectWorks(entries,order,active,category.value);
+  const visible=selectWorks(entries,order,active,category.value,prioritize);
   gallery.replaceChildren();
   for(const entry of visible){
    const card=el("article",undefined,"work-card");
@@ -151,7 +151,7 @@ function startGallery() {
  const available=new Set(entries.map(publicCategory));
  for(const type of preferred.filter(x=>available.has(x))){const opt=el("option",type);opt.value=type;category.append(opt)}
  category.addEventListener("change",render);
- $("reset").addEventListener("click",()=>{order=[...initial];active=[...initial];category.value="all";redrawLenses();render()});
+ $("reset").addEventListener("click",()=>{order=[...initial];active=[...initial];prioritize=false;category.value="all";redrawLenses();render()});
  // Now is authored directly in index.html: preserve prose and inline links.
  const upcoming=$("upcoming-list");
  const date=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Los_Angeles",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date());
