@@ -8,9 +8,21 @@
 <title>Rachel Heleva</title>
 <link rel="icon" type="image/svg+xml" href="./doorway-transparent.svg">
 <link rel="stylesheet" href="./archive.css?v=20261127-reading">
-<script defer src="./archive-data.js"></script>
 <script defer src="./writings.js?v=20261127-reading"></script>
-<script defer src="./archive-gallery.js?v=20261127-reading"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const data = document.createElement("script");
+  data.src = "./archive-data.js?v=" + Date.now();
+  const loadGallery = () => {
+    const gallery = document.createElement("script");
+    gallery.src = "./archive-gallery.js?v=20261127-reading";
+    document.head.append(gallery);
+  };
+  data.addEventListener("load", loadGallery, {once:true});
+  data.addEventListener("error", loadGallery, {once:true});
+  document.head.append(data);
+}, {once:true});
+</script>
 </head>
 <body>
 <main id="home">
@@ -19,14 +31,14 @@
 <h1>rachel heleva</h1>
 <div id="lenses" class="lenses" aria-label="Gallery themes"></div>
 <noscript><p>games, systems, verse</p></noscript>
-<nav aria-label="Page sections"><a href="#work">archive</a> · <a href="#about">about</a> · <a href="#contact">contact</a></nav>
+<nav aria-label="Page sections"><a href="#work">work</a> · <a href="#about">about</a> · <a href="#contact">contact</a></nav>
 </header>
 <div class="activity">
 <section aria-labelledby="now-title"><h2 id="now-title">now</h2><ul id="now-list"><li>Experimenting with <a href="https://luma.com/gamepoems">playable poetry</a>.</li><li><a href="https://www.themade.org/">Curating exhibitions</a> of <a href="https://luma.com/pzkqk2af">unconventional games</a>.</li></ul></section>
 <section aria-labelledby="upcoming-title"><h2 id="upcoming-title">upcoming</h2><ul id="upcoming-list"><li data-start="2027-01-01" data-end="2027-01-31">Jan · <a href="https://luma.com/kljh8q33">Laboratory of Narrative Possibility</a></li><li data-start="2027-01-23" data-end="2027-01-23">Jan 23 · <a href="https://luma.com/7qidj7ys">Skate or Die</a></li><li data-start="2027-03-01" data-end="2027-03-01">Mar 1 · <a href="https://luma.com/pzkqk2af">Out of the Box</a></li></ul></section>
 </div>
 <section id="work" aria-labelledby="work-title">
-<div class="gallery-head"><h2 id="work-title">archive</h2><label for="category">View <select id="category"><option value="all">Everything</option></select></label></div>
+<div class="gallery-head"><h2 id="work-title">work</h2><label for="category">View <select id="category"><option value="all">Everything</option></select></label></div>
 <div id="gallery" class="gallery"><article class="work-card"><a href="./works/in-countless-shadows.html"><img src="./images/work-in-countless-shadows.svg" alt="In Countless Shadows abstract cover" width="400" height="400" loading="lazy"></a><h3><a href="./works/in-countless-shadows.html">In Countless Shadows</a></h3><p class="meta">Games</p></article>
 <article class="work-card"><a href="./works/you-are-rhyme.html"><img src="./images/work-you-are-rhyme.svg" alt="you are rhyme abstract cover" width="400" height="400" loading="lazy"></a><h3><a href="./works/you-are-rhyme.html">you are rhyme</a></h3><p class="meta">Games</p></article>
 <article class="work-card"><h3><a href="https://luma.com/gamepoems">Game Poems</a></h3><p class="meta">Gatherings · 2026</p></article>
