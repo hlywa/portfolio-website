@@ -10,7 +10,7 @@ window.creativeArchive = [
       "verse"
     ],
     "openAs": "Page",
-    "date": "",
+    "date": "2026-10-23",
     "endDate": "",
     "status": "In progress",
     "description": "A puzzle game about taking apart Shakespearean sonnets and putting them together in new compositions.",
@@ -35,7 +35,7 @@ window.creativeArchive = [
       "systems"
     ],
     "openAs": "Page",
-    "date": "",
+    "date": "2026-03-28",
     "endDate": "",
     "status": "Completed",
     "description": "A Quest Markers conversation about how independent games get funded, design positioning, and the games I've helped support.",
@@ -126,7 +126,7 @@ window.creativeArchive = [
       "systems"
     ],
     "openAs": "Page",
-    "date": "",
+    "date": "2024-05-10",
     "endDate": "",
     "status": "Completed",
     "description": "Design philosophy, genre research and scouting at Astra Fund and Astra Logical. A MAZE. / Berlin, 2024.",
@@ -151,7 +151,7 @@ window.creativeArchive = [
       "verse"
     ],
     "openAs": "Gallery card",
-    "date": "",
+    "date": "2026-11-27",
     "endDate": "",
     "status": "In progress",
     "description": "An investigation into the invention, transmission and transformation of expressive forms.",
