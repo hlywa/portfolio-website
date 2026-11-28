@@ -1,44 +1,92 @@
-name: Prepare creative archive update
+name: Publish creative archive
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '17,47 * * * *'
   push:
     branches: [main]
-    paths: ["scripts/sync-notion.mjs", "scripts/archive-pages.mjs"]
 permissions:
-  contents: write
+  contents: read
 concurrency:
   group: creative-archive-sync
   cancel-in-progress: false
 jobs:
-  export:
+  build:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      pages: read
+    outputs:
+      enabled: ${{ steps.source.outputs.enabled }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Check Pages publishing source
+        id: source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          source=$(gh api "repos/$GITHUB_REPOSITORY/pages" --jq '.build_type')
+          if [ "$source" != workflow ]; then
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::One-time setup required: Settings > Pages > Source > GitHub Actions. The existing website is unchanged."
+            exit 0
+          fi
+          echo "enabled=true" >> "$GITHUB_OUTPUT"
       - uses: actions/setup-node@v4
+        if: steps.source.outputs.enabled == 'true'
         with:
           node-version: '22'
-      - name: Validate and export
+      - name: Validate and export approved content
+        if: steps.source.outputs.enabled == 'true'
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_DATA_SOURCE_ID: ${{ vars.NOTION_DATA_SOURCE_ID }}
         run: |
           node scripts/sync-notion.mjs --test
+          node scripts/sync-notion.mjs --check-connection
           node scripts/sync-notion.mjs
           node --check archive-data.js
           node --check archive-gallery.js
-      - name: Prepare review branch
+          node --check writings.js
+      - name: Stage and validate website
+        if: steps.source.outputs.enabled == 'true'
         run: |
           git add -- archive-data.js
-          git add -A -- works
-          if [ -d images/archive ]; then git add -A -- images/archive; fi
-          if git diff --cached --quiet; then
-            echo "No archive changes."
-            exit 0
+          git add -A -- works images/archive
+          git diff --cached --check
+          node scripts/stage-site.mjs "$RUNNER_TEMP/archive-site"
+      - name: Commit validated archive changes
+        if: steps.source.outputs.enabled == 'true'
+        run: |
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Publish approved creative archive updates"
+            git push origin HEAD:main
+          else
+            echo "No archive changes; deploying current snapshot."
           fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git switch -c "archive-sync-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
-          git commit -m "Update approved creative archive"
-          git push origin HEAD
-          echo "Review this branch before merging." >> "$GITHUB_STEP_SUMMARY"
+          test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/main | cut -f1)"
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.source.outputs.enabled == 'true'
+        with:
+          path: ${{ runner.temp }}/archive-site
+  deploy:
+    needs: build
+    if: needs.build.outputs.enabled == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy validated website
+        id: deployment
+        uses: actions/deploy-pages@v4
