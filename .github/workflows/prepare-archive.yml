@@ -20,6 +20,7 @@ jobs:
       pages: read
     outputs:
       enabled: ${{ steps.source.outputs.enabled }}
+      artifact: ${{ steps.artifact.outputs.name }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -71,10 +72,15 @@ jobs:
             echo "No archive changes; deploying current snapshot."
           fi
           test "$(git rev-parse HEAD)" = "$(git ls-remote origin refs/heads/main | cut -f1)"
+      - name: Name deployment artifact
+        id: artifact
+        if: steps.source.outputs.enabled == 'true'
+        run: echo "name=github-pages-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" >> "$GITHUB_OUTPUT"
       - uses: actions/upload-pages-artifact@v3
         if: steps.source.outputs.enabled == 'true'
         with:
           path: ${{ runner.temp }}/archive-site
+          name: ${{ steps.artifact.outputs.name }}
   deploy:
     needs: build
     if: needs.build.outputs.enabled == 'true'
@@ -90,3 +96,5 @@ jobs:
       - name: Deploy validated website
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: ${{ needs.build.outputs.artifact }}
