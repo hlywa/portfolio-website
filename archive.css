@@ -32,7 +32,7 @@ main>section { padding:30px 0; border-bottom:1px solid #333; scroll-margin-top:1
 select { padding:4px 8px; border:1px solid #777; background:#111; font-size:14px; }
 .gallery { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:30px 22px; align-items:start; }
 .work-card { min-width:0; overflow-wrap:anywhere; }
-.work-card img { display:block; width:100%; height:auto; max-height:340px; object-fit:contain; object-position:left center; }
+.work-card img { display:block; width:100%; height:auto; aspect-ratio:4 / 3; object-fit:cover; object-position:center; }
 .work-card h3 { margin:8px 0 2px; }
 .meta { font-size:13px; color:#aaa; }
 #gallery-status { margin:14px 0 0; }
