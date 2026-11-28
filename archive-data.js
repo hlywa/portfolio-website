@@ -49,6 +49,53 @@ window.creativeArchive = [
     "externalUrl": "https://www.youtube.com/watch?v=R4it22rr9Zk"
   },
   {
+    "id": "4315bb3a5abe9235f5ac5de1",
+    "title": "you are rhyme",
+    "type": "Collaboration",
+    "themes": [
+      "games",
+      "systems",
+      "verse"
+    ],
+    "openAs": "Page",
+    "date": "2026-11-09",
+    "endDate": "",
+    "status": "In progress",
+    "description": "A game where how you speak Shakespeare changes what happens.",
+    "credits": "",
+    "url": "./works/you-are-rhyme.html",
+    "featured": true,
+    "now": false,
+    "event": false,
+    "cover": "./images/archive/4315bb3a5abe9235f5ac5de1-cover-c988b8c8578b7c80.png",
+    "images": {},
+    "legacyTitle": "you are rhyme",
+    "externalUrl": "https://github.com/kdavidmitchell/you-are-rhyme"
+  },
+  {
+    "id": "44e63654b96e96b865c1d85f",
+    "title": "Game Poems",
+    "type": "Gathering",
+    "themes": [
+      "games",
+      "verse"
+    ],
+    "openAs": "Page",
+    "date": "2026-10-23",
+    "endDate": "",
+    "status": "Completed",
+    "description": "An evening of playable poetry, readings, performances and experiments in game form. Computational Poetry Reading Group, tiat.",
+    "credits": "",
+    "url": "./works/archive-44e63654b96e96b865c1d85f.html",
+    "featured": false,
+    "now": false,
+    "event": false,
+    "cover": "./images/archive/44e63654b96e96b865c1d85f-cover-b0bff736af742ec2.png",
+    "images": {},
+    "legacyTitle": "game poems",
+    "externalUrl": "https://luma.com/gamepoems"
+  },
+  {
     "id": "8bf024b51662966f88a02fa2",
     "title": "Pitching Your Thinky Game",
     "type": "Talk",
@@ -96,4 +143,4 @@ window.creativeArchive = [
     "externalUrl": "https://www.youtube.com/watch?v=h-gnrK2r5rQ"
   }
 ];
-window.creativeArchiveManaged = ["in countless shadows","what are thinky games?"];
+window.creativeArchiveManaged = ["game poems","in countless shadows","what are thinky games?","you are rhyme"];

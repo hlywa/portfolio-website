@@ -1,38 +1,34 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#000000">
-<title>you are rhyme · Rachel Heleva</title>
-<link rel="icon" type="image/svg+xml" href="../doorway-transparent.svg">
-<link rel="stylesheet" href="../archive.css?v=20261127-reading">
-</head>
-<body>
-<main class="reading-page">
-<header class="reading-nav"><a href="../#work">← work</a><a href="../">｡･:*˚:✧｡</a></header>
-<article class="reading-article">
-      <div class="shadows-heading">
-        <h1>you are rhyme</h1>
-        <p class="shadows-deck">A game where how you speak Shakespeare changes what happens.</p>
-      </div>
-      <figure class="detail-cover"><img src="../images/work-you-are-rhyme.svg" alt="Abstract typographic cover for you are rhyme" width="400" height="400"/></figure>
-      <div class="shadows-prose">
-        <p class="shadows-question">What if performing a line of Shakespeare changed the world of the play?</p>
-        <p><em>you are rhyme</em> is a voice-activated theatrical game built around the confrontation between Hamlet and Gertrude in Act III, Scene IV. Rather than selecting moves from a conventional menu, players speak their characters' lines. How those lines are delivered shapes what happens on a tactical grid.</p>
-        <p>The game translates vocal performance into rules. A local speech-recognition pipeline listens for pauses and volume, while the system compares spoken words with Shakespeare's script and measures changes in pacing. Those signals pass through a custom domain-specific language that turns performance into actions such as lunging, feinting, repelling, disarming, and altering the arras.</p>
-        <p>The two roles have different possibilities. Hamlet tries to reach Polonius behind the arras; Gertrude tries to protect him. A procedurally generated stage places bodies, barriers, and furniture into changing configurations. The project also experiments with genetic algorithms that test candidate layouts through simulated matches.</p>
-        <p><em>you are rhyme</em> asks what happens when theatrical interpretation is made operational: when a pause, an emphatic line, or a departure from the text is no longer only a matter of expression, but a consequential move inside a playable system.</p>
-      </div>
-      <dl class="shadows-facts">
-        <div><dt>Status</dt><dd>Prototype / in development</dd></div>
-        <div><dt>Format</dt><dd>Voice-controlled theatrical strategy game</dd></div>
-        <div><dt>Technology</dt><dd>React, Vite, Node.js, Python, Whisper, custom DSL, genetic algorithms</dd></div>
-        <div><dt>Source</dt><dd><a href="https://github.com/kdavidmitchell/you-are-rhyme" target="_blank" rel="noopener noreferrer">GitHub: kdavidmitchell/you-are-rhyme ↗</a></dd></div>
-      </dl>
-    
-</article>
-<footer><a href="../#work">← work</a></footer>
-</main>
-</body>
-</html>
+<!-- Generated from approved Creative Archive content. -->
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#000000"><meta name="description" content="A game where how you speak Shakespeare changes what happens."><title>you are rhyme · Rachel Heleva</title><link rel="icon" type="image/svg+xml" href="../doorway-transparent.svg"><link rel="stylesheet" href="../archive.css"></head>
+<body><main class="reading-page"><header class="reading-nav"><a href="../#work">← work</a><a href="../">｡･:*˚:✧｡</a></header><article class="reading-article"><h1>you are rhyme</h1><p class="meta">Collaboration · games · systems · verse · 2026</p>
+<div class="archive-body">
+<p>A game where how you speak Shakespeare changes what happens.</p>
+<p>Two actors can speak the same words and produce different worlds. In <em>you are rhyme</em>, a pause can pierce a tapestry or move furniture into an opponent&#39;s path.</p>
+<p>Developed with Kyle Mitchell and Josh McCoy at UC Davis. I served on the organizing committee of the <a href="https://wagd.site/">Workshop on Automated Game Design (WAGD)</a> at <a href="https://sites.google.com/view/aiide2026/home">AIIDE 2026</a>, where I also showcased our research on November 9. Our demo paper, <em>You Are Rhyme: Making Shakespeare&#39;s Formactions Playable</em>, is forthcoming in the WAGD workshop proceedings (CEUR-WS).</p>
+<figure class="archive-media"><img src="../images/archive/4315bb3a5abe9235f5ac5de1-body-1-189fad4a6679f5ac.png" alt="Project documentation" loading="lazy" decoding="async"></figure>
+<p><br></p>
+<h2>Formactions</h2>
+<p>In <a href="https://www.cambridge.org/core/books/shakespeares-possible-worlds/C459A49D345F2C8E216AB2FC815D2D7B"><em>Shakespeare&#39;s Possible Worlds</em></a>, Simon Palfrey describes Shakespeare&#39;s playworlds as “organic machines, alive with multiplying processes.” Drawing on Leibniz, he develops the concept of <em>formactions</em>: elements of dramatic form, such as rhymes, cues and gaps between lines, that possess capacities for action.</p>
+<p>I find this a compelling way to think about Shakespeare computationally. Like a program, a dramatic text contains relationships whose possibilities unfold through execution. Rather than generate new dialogue, we wanted to make qualities of the existing dialogue executable.</p>
+<h2>The chamber</h2>
+<p>Two players perform Act III, Scene IV of <em>Hamlet</em> while competing on a 20 × 15 tactical grid. Hamlet attempts to reach Polonius behind the arras (a tapestry); Gertrude tries to prevent him. The eighteen scripted dialogue entries structure the encounter. How the players deliver them changes the stage.</p>
+<figure class="archive-media"><img src="../images/archive/4315bb3a5abe9235f5ac5de1-body-2-06dbfd42e81d0704.png" alt="Project documentation" loading="lazy" decoding="async"></figure>
+<h2>Compiling performance</h2>
+<p>A local faster-whisper model transcribes speech and supplies word timestamps. We measure volume (RMS), accumulated silence, deviation from the script (normalized Levenshtein distance) and estimated speaking rate relative to 130 words per minute.</p>
+<p>Our <a href="https://github.com/kdavidmitchell/you-are-rhyme/blob/kyle-multiplayer/server/dsl-compiler.js">formaction compiler</a> normalizes these features and selects actions using character-specific thresholds. The same vocal quality produces different effects depending on the role:</p>
+<ul>
+<li>Amplitude: Lunge / Repel</li>
+<li>Silence: Pierce / Barricade</li>
+<li>Cadence variation: Feint / Interpose</li>
+<li>Script deviation: Fracture / Disarm</li>
+</ul>
+<p>The compiler also determines action parameters such as movement distance and charge. A readout exposes the competing vocal drives, allowing players to learn how their delivery changes the world.</p>
+<h2>Evolving the stage</h2>
+<p>We use <a href="https://github.com/kdavidmitchell/you-are-rhyme/blob/kyle-multiplayer/server/ga-runner.js">evolutionary level generation</a> to explore different stagings of the scene. Candidate chambers vary the positions of the actors, furniture and arras. A genetic algorithm evaluates them through simulated play, rewarding counterplay (35%), action diversity (25%), dramatic tension (25%) and spatial composition (15%).</p>
+<p>A 5 × 5 MAP-Elites archive retains strong candidates across two dimensions: claustrophobia and tactical friction. Instead of optimizing for one ideal chamber, we preserve different conditions for performing the same text.</p>
+<h2>Playing as a way of reading</h2>
+<p>What interests me is the tension between how I want to deliver a line as an actor and what I want to accomplish as a player. Can the demands of play lead me toward an interpretation I wouldn&#39;t otherwise consider?</p>
+<p>The system doesn&#39;t infer emotion or understand Shakespeare. Its vocal mappings and measures of dramatic tension are authored models, with limitations that need testing against human performance. But they give us something we can experiment with: the relationship between dramatic form, physical space and the act of interpretation.</p>
+<p><a href="https://github.com/kdavidmitchell/you-are-rhyme">Source code</a> · <a href="https://wagd.site/">WAGD 2026 program</a> · <a href="https://sites.google.com/view/aiide2026/home">AIIDE 2026</a></p>
+</div></article><footer><a href="../#work">← work</a></footer></main></body></html>
