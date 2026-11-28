@@ -14,7 +14,7 @@ const LEGACY=[
     "url": "./works/in-countless-shadows.html",
     "featured": true,
     "now": true,
-    "description": "An experimental poetry game that makes the sonnet form playable."
+    "description": "A puzzle game about taking apart Shakespearean sonnets and putting them together in new compositions."
   },
   {
     "id": "legacy-rhyme",
@@ -30,7 +30,7 @@ const LEGACY=[
     "url": "./works/you-are-rhyme.html",
     "featured": true,
     "now": true,
-    "description": "Transforming spoken Shakespeare into tactical action."
+    "description": "A game where how you speak Shakespeare changes what happens."
   },
   {
     "id": "legacy-game-poems",
@@ -42,7 +42,7 @@ const LEGACY=[
     ],
     "date": "2026",
     "url": "https://luma.com/gamepoems",
-    "description": "Computational Poetry Reading Group, tiat"
+    "description": "An evening of poems you can play."
   },
   {
     "id": "legacy-thinky",

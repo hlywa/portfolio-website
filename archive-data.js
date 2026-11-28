@@ -13,7 +13,7 @@ window.creativeArchive = [
     "date": "",
     "endDate": "",
     "status": "In progress",
-    "description": "An experimental poetry game that makes the sonnet form playable.",
+    "description": "A puzzle game about taking apart Shakespearean sonnets and putting them together in new compositions.",
     "credits": "",
     "url": "./works/in-countless-shadows.html",
     "featured": true,
