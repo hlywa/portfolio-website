@@ -49,6 +49,28 @@ window.creativeArchive = [
     "externalUrl": "https://www.youtube.com/watch?v=R4it22rr9Zk"
   },
   {
+    "id": "8bf024b51662966f88a02fa2",
+    "title": "Pitching Your Thinky Game",
+    "type": "Talk",
+    "themes": [
+      "games",
+      "systems"
+    ],
+    "openAs": "Page",
+    "date": "2024-04-06",
+    "endDate": "",
+    "status": "Completed",
+    "description": "Design philosophy across genres, audience research and the relationship between game design and publishing. ThinkyCon 2024.",
+    "credits": "",
+    "url": "./works/archive-8bf024b51662966f88a02fa2.html",
+    "featured": false,
+    "now": false,
+    "event": false,
+    "cover": "./images/archive/8bf024b51662966f88a02fa2-cover-5a3facbc8da4ec23.jpg",
+    "images": {},
+    "externalUrl": "https://www.youtube.com/watch?v=a5OWJbeilXY"
+  },
+  {
     "id": "b5b4baf470532fde3aa7d110",
     "title": "What Are Thinky Games?",
     "type": "Talk",
