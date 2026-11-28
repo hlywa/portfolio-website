@@ -160,7 +160,7 @@ window.creativeArchive = [
     "featured": true,
     "now": true,
     "event": false,
-    "cover": "./images/archive/c069cbf1c425491c033376d1-cover-71d29e14b0848706.png",
+    "cover": "./images/archive/c069cbf1c425491c033376d1-cover-bf7dcf52509d46ae.png",
     "images": {
       "verse": "./images/archive/c069cbf1c425491c033376d1-verse-8ee46b7b63e41310.png"
     },
