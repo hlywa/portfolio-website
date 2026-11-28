@@ -54,6 +54,8 @@ summary { cursor:pointer; }
 .shadows-facts dt { color:#aaa; font-size:14px; }
 .shadows-facts dd { margin:0; }
 .cv-intro { max-width:72ch; }
+.home-intro { max-width:none; margin:0 0 18px; scroll-margin-top:18px; }
+.home-intro p { margin:0; }
 .cv-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px 30px; margin-top:10px; }
 .cv-grid ul { padding-left:18px; }
 .cv-photo { margin:22px 0 0; }
