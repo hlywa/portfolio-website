@@ -27,6 +27,28 @@ window.creativeArchive = [
     "externalUrl": "https://github.com/hlywa/in-countless-shadows"
   },
   {
+    "id": "1a2ac2589b4827843c361178",
+    "title": "Video Game Publishing 101",
+    "type": "Talk",
+    "themes": [
+      "games",
+      "systems"
+    ],
+    "openAs": "Page",
+    "date": "",
+    "endDate": "",
+    "status": "Completed",
+    "description": "A Quest Markers conversation about how independent games get funded, design positioning, and the games I've helped support.",
+    "credits": "",
+    "url": "./works/archive-1a2ac2589b4827843c361178.html",
+    "featured": false,
+    "now": false,
+    "event": false,
+    "cover": "./images/archive/1a2ac2589b4827843c361178-cover-a869425a5a237728.jpg",
+    "images": {},
+    "externalUrl": "https://www.youtube.com/watch?v=R4it22rr9Zk"
+  },
+  {
     "id": "b5b4baf470532fde3aa7d110",
     "title": "What Are Thinky Games?",
     "type": "Talk",
