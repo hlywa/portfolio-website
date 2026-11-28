@@ -150,20 +150,21 @@ window.creativeArchive = [
       "systems",
       "verse"
     ],
-    "openAs": "Gallery card",
+    "openAs": "Page",
     "date": "2026-11-27",
     "endDate": "",
     "status": "In progress",
-    "description": "An investigation into the invention, transmission and transformation of expressive forms.",
+    "description": "How writing techniques evolve, spread and breed.",
     "credits": "",
-    "url": "",
+    "url": "./works/archive-c069cbf1c425491c033376d1.html",
     "featured": true,
     "now": true,
     "event": false,
-    "cover": "./images/archive/c069cbf1c425491c033376d1-cover-8ee46b7b63e41310.png",
+    "cover": "./images/archive/c069cbf1c425491c033376d1-cover-71d29e14b0848706.png",
     "images": {
       "verse": "./images/archive/c069cbf1c425491c033376d1-verse-8ee46b7b63e41310.png"
-    }
+    },
+    "externalUrl": ""
   }
 ];
 window.creativeArchiveManaged = ["game poems","in countless shadows","what are thinky games?","you are rhyme"];
