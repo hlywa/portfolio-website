@@ -141,6 +141,29 @@ window.creativeArchive = [
     },
     "legacyTitle": "what are thinky games?",
     "externalUrl": "https://www.youtube.com/watch?v=h-gnrK2r5rQ"
+  },
+  {
+    "id": "c069cbf1c425491c033376d1",
+    "title": "The Inheritance of Form",
+    "type": "Research",
+    "themes": [
+      "systems",
+      "verse"
+    ],
+    "openAs": "Gallery card",
+    "date": "",
+    "endDate": "",
+    "status": "In progress",
+    "description": "An investigation into the invention, transmission and transformation of expressive forms.",
+    "credits": "",
+    "url": "",
+    "featured": true,
+    "now": true,
+    "event": false,
+    "cover": "./images/archive/c069cbf1c425491c033376d1-cover-8ee46b7b63e41310.png",
+    "images": {
+      "verse": "./images/archive/c069cbf1c425491c033376d1-verse-8ee46b7b63e41310.png"
+    }
   }
 ];
 window.creativeArchiveManaged = ["game poems","in countless shadows","what are thinky games?","you are rhyme"];
