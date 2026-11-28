@@ -22,8 +22,8 @@ Edit the two authored Now statements in index.html, including inline links. The 
 
 1. Create a read-only internal integration in Rachel Zone. Grant access only to Creative Archive, not the dashboard or editorial drafts. Do not make the archive public.
 2. In GitHub Settings > Secrets and variables > Actions, create repository secret NOTION_TOKEN with the token, and variable NOTION_DATA_SOURCE_ID with the archive data-source UUID (not page ID). Never put credentials in Git, frontend code, or chat.
-3. On main, manually trigger Prepare creative archive update (also triggered after changes to the exporter on main). It exports approved entries, runs checks, and pushes a review branch only. Review and merge that branch via PR. A bot commit alone does not trigger a branch-based Pages build. Verify actual deployment settings before release.
-4. Or run locally with Node 22: node scripts/sync-notion.mjs --test, then node scripts/sync-notion.mjs with environment variables set securely. Review and batch changes.
+3. In Settings > Pages, choose GitHub Actions as the publishing source (one-time setup). Keep the existing custom domain. Publish creative archive runs twice an hour, on main pushes, and on demand from Actions. It validates approved Notion content and deploys directly; no review branch or manual merge is needed.
+4. For local development use Node 22: node scripts/sync-notion.mjs --test, then node scripts/sync-notion.mjs with environment variables set securely. Review and batch code changes.
 
 ## Publishing individual works
 
@@ -32,4 +32,5 @@ Edit the two authored Now statements in index.html, including inline links. The 
 - Add paragraphs, headings, quotations, lists, code, dividers, images and HTTPS media links. Poetry line breaks are preserved. Video and embeds are links, not interactive players. Add private notes outside the markers.
 - The first image in each designated file property is copied into images/archive (PNG, JPEG, WebP, GIF or AVIF, up to 10 MB each). A theme image is a fallback when Cover is empty. Inline public images are copied too.
 - Check Publish only when the public fields and section are reviewed. Unchecking removes generated pages and managed assets on the next export. Public Git history may retain earlier content; never approve confidential material.
-- Review the generated branch before merging. The workflow does not schedule or auto-merge updates. Edit Notion, not generated pages.
+- Checking Publish opts the entry into automatic publication, including subsequent edits to its public content. Uncheck before drafting sensitive revisions. Only reviewed public properties and blocks between the two markers are exported. Edit Notion, not generated pages.
+- The scheduled publisher commits only changed archive content, validates all generated destinations and local images, and stages only tracked public site files. If validation fails, no new deployment occurs and the existing website stays live. GitHub may delay scheduled runs; use Actions > Publish creative archive > Run workflow for an immediate update if needed.

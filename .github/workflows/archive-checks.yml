@@ -19,6 +19,8 @@ jobs:
           node --check writings.js
           node --check scripts/sync-notion.mjs
           node scripts/sync-notion.mjs --test
+          node --check scripts/stage-site.mjs
+          node scripts/stage-site.mjs "$(mktemp -d)"
   notion-connection:
     if: github.event_name == 'push' && (github.ref == 'refs/heads/creative-archive-redesign' || github.ref == 'refs/heads/archive-page-publishing')
     runs-on: ubuntu-latest
